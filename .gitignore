@@ -216,3 +216,31 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Ralph — état d'exécution (par boucle, ce n'est pas de la source)
+.ralph/.call_count
+.ralph/.last_reset
+.ralph/.exit_signals
+.ralph/.ralph_session
+.ralph/.ralph_session_history
+.ralph/.claude_session_id
+.ralph/.response_analysis
+.ralph/.circuit_breaker_state
+.ralph/.circuit_breaker_history
+.ralph/.last_output_length
+.ralph/.loop_start_sha
+.ralph/.token_count
+.ralph/status.json
+.ralph/progress.json
+.ralph/ralph-run.out
+.ralph_backup_*
+
+# Ralph — logs et docs générées
+.ralph/logs/*
+!.ralph/logs/.gitkeep
+.ralph/docs/generated/*
+!.ralph/docs/generated/.gitkeep
+
+# Claude Code — surcharges locales
+.claude/settings.local.json
+.claude/scheduled_tasks.lock
