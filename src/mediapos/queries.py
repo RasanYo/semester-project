@@ -14,8 +14,11 @@ removes that outlet from the pull, discovered only after the compile.
 
 from __future__ import annotations
 
+import csv
+import lzma
 import os
 import time
+from collections.abc import Iterator
 from datetime import date
 from pathlib import Path
 from typing import Any
@@ -172,3 +175,93 @@ def check_sources(
     present = [c for c in codes if c in known]
     missing = [c for c in codes if c not in known]
     return present, missing
+
+
+# --------------------------------------------------------------- pulling ----
+
+# A submitted query is compiled server-side, which takes anywhere from seconds
+# to -- observed on this account -- fifty minutes of queue before it even
+# starts. Never poll tightly.
+POLL_FIRST_SECONDS = 20
+POLL_MAX_SECONDS = 300
+
+
+def submit(yaml_text: str, *, name: str, comment: str = "") -> str:
+    """Submit a query for compilation. Returns the query id.
+
+    This is the only call in the module that costs anything. `name` and
+    `comment` are the only labels the account will carry afterwards, and the
+    web UI auto-names queries by timestamp, which makes them unidentifiable --
+    so always set both.
+    """
+    resp = requests.post(
+        f"{API_BASE}/query",
+        headers=_credentials(),
+        data={"query": yaml_text, "name": name, "comment": comment},
+        timeout=180,
+    )
+    resp.raise_for_status()
+    payload = resp.json()
+    # The submit response names it `queryId`; /status names the same thing
+    # `id`. Accept either so a rename on one side does not silently resubmit.
+    query_id = payload.get("queryId") or payload.get("id")
+    if not query_id:
+        raise RuntimeError(f"no query id in response: {payload}")
+    return query_id
+
+
+def status(query_id: str | None = None) -> list[dict[str, Any]]:
+    """Query lifecycle. Both endpoints return a LIST, never an object.
+
+    An unknown id returns HTTP 200 with an empty list rather than a 404, so a
+    naive poller loops forever on a typo. Callers must treat empty as an error.
+    """
+    url = f"{API_BASE}/status" + (f"/{query_id}" if query_id else "")
+    resp = requests.get(url, headers=_credentials(), timeout=60)
+    resp.raise_for_status()
+    return resp.json()
+
+
+def wait_for(query_id: str, *, timeout_seconds: int = 7200) -> dict[str, Any]:
+    """Poll until the query finishes, fails, or the timeout expires."""
+    waited, interval = 0, POLL_FIRST_SECONDS
+    while waited < timeout_seconds:
+        rows = status(query_id)
+        if not rows:
+            raise RuntimeError(f"unknown query id {query_id} (empty /status list)")
+        row = rows[0]
+        state = row.get("status")
+        if state == "finished":
+            return row
+        if state in ("failed", "canceled") or row.get("error"):
+            raise RuntimeError(f"query {query_id} {state}: {row.get('error')}")
+        time.sleep(interval)
+        waited += interval
+        interval = min(interval * 2, POLL_MAX_SECONDS)
+    raise TimeoutError(f"query {query_id} still {state!r} after {timeout_seconds}s")
+
+
+def download(download_url: str, dest: Path) -> Path:
+    """Stream the compiled `.tsv.xz` to disk. The corpus never enters git."""
+    dest.parent.mkdir(parents=True, exist_ok=True)
+    with requests.get(
+        download_url, headers=_credentials(), stream=True, timeout=1800
+    ) as resp:
+        resp.raise_for_status()
+        with dest.open("wb") as fh:
+            for chunk in resp.iter_content(chunk_size=1 << 20):
+                fh.write(chunk)
+    return dest
+
+
+def read_articles(path: Path) -> Iterator[dict[str, str]]:
+    """Stream rows out of the archive rather than decompressing it first.
+
+    `content` is XML, not plain text: a <tx> root with <ld> lead, <p>, <zt>
+    crossheads, <lg> legends, <ka> boxes and <au> author, plus leftover HTML.
+    Parsing it is the caller's problem; this only yields the raw columns.
+    """
+    with lzma.open(path, mode="rt", encoding="utf-8", newline="") as fh:
+        # Article bodies blow past the default field-size limit.
+        csv.field_size_limit(1 << 30)
+        yield from csv.DictReader(fh, delimiter="\t")

@@ -73,6 +73,9 @@ tables. An omitted filter means no filtering, not an empty result.
   A typo just drops that outlet from the pull and you find out after the
   compile. Check every code against `swissdox_sources.json` locally first —
   and note that file is `{"rows": [...], "totals": {...}}`, not a bare list.
+- A real submit returns the id as **`queryId`**, while `/status` calls the same
+  thing **`id`**. Read both, or a working submit looks like a failure and you
+  pay for a second compile.
 - **Pace a batch of `test=1` submissions, ~12 s apart.** The endpoint 500s
   (sometimes 504s) under rapid sequential validation. Measured: 20 back-to-back
   queries reported 7 false failures; 5 s apart still reported 4; every one of

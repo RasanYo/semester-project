@@ -1,0 +1,58 @@
+{
+  "A-631": {
+    "query_id": "c448ac86-63a4-43b4-a626-ea5ddc1c4dbb",
+    "query_name": "mediapos-A-631",
+    "window": [
+      "2020-08-28",
+      "2020-10-11"
+    ],
+    "n_sources": 34,
+    "actual_results": 87403,
+    "articles_read": 87403,
+    "compressed_bytes": 97470500,
+    "sha256": "e26c9eeceff5827cd988bdbe0ca08f69a37349af54f092a8d8d2ae6362aad175",
+    "added_on": "2026-09-14T17:48:56.100499",
+    "finished_on": "2026-09-14T17:50:05.291990",
+    "by_language": {
+      "de": 58649,
+      "fr": 28754
+    },
+    "by_medium": {
+      "ZWAO": 3148,
+      "NNHEU": 4494,
+      "TPSO": 1387,
+      "SGTO": 4392,
+      "HEU": 1915,
+      "BLIO": 4295,
+      "TA": 2495,
+      "NZZO": 2779,
+      "BAZ": 2237,
+      "NNBE": 4007,
+      "NNBS": 3175,
+      "NNBU": 3054,
+      "NNTA": 3151,
+      "NNTLM": 4439,
+      "SGT": 2794,
+      "LUZ": 2881,
+      "AZM": 4575,
+      "BU": 2187,
+      "NNTDG": 4379,
+      "ZWA": 1947,
+      "ZWAS": 1634,
+      "RTS": 1422,
+      "TPS": 1711,
+      "TDG": 1841,
+      "SRF": 3602,
+      "BLI": 1624,
+      "TLMD": 518,
+      "NZZ": 2082,
+      "NZZS": 649,
+      "ZWSO": 5004,
+      "BZ": 2404,
+      "TAS": 552,
+      "WEW": 395,
+      "WOZ": 234
+    },
+    "local_path": "data/corpus/A-631.tsv.xz"
+  }
+}
