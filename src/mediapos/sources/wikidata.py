@@ -211,3 +211,64 @@ def expand_types(type_qids: list[str], roots: tuple[str, ...]) -> set[str]:
         "}"
     )
     return {qid(r["t"]) for r in rows}
+
+
+def events_of_type(
+    type_qid: str, *, date_from: str, date_to: str, limit: int = 100
+) -> list[dict[str, Any]]:
+    """Every event of a given class with a day-precision date in the window.
+
+    Used for block B, where the point is a complete enumeration rather than a
+    ranking: taking all Federal Council elections removes the last place a
+    choice could hide.
+    """
+    rows = sparql(
+        "SELECT ?item ?l_de ?l_fr ?l_en ?date ?sl WHERE {\n"
+        f"  ?item wdt:P31/wdt:P279* wd:{type_qid} ;\n"
+        "        wikibase:sitelinks ?sl ;\n"
+        "        p:P585/psv:P585 ?tv .\n"
+        "  ?tv wikibase:timeValue ?date ; wikibase:timePrecision ?prec .\n"
+        "  FILTER(?prec >= 11)\n"
+        f'  FILTER(?date >= "{date_from}T00:00:00Z"^^xsd:dateTime\n'
+        f'      && ?date <= "{date_to}T23:59:59Z"^^xsd:dateTime)\n'
+        '  OPTIONAL { ?item rdfs:label ?l_de FILTER(lang(?l_de)="de") }\n'
+        '  OPTIONAL { ?item rdfs:label ?l_fr FILTER(lang(?l_fr)="fr") }\n'
+        '  OPTIONAL { ?item rdfs:label ?l_en FILTER(lang(?l_en)="en") }\n'
+        "}\n"
+        f"ORDER BY ?date LIMIT {limit}"
+    )
+    for r in rows:
+        r["qid"] = qid(r["item"])
+        r["sitelinks"] = int(r["sl"])
+        r["date"] = r["date"][:10]
+        r["type_qids"] = [type_qid]
+    return rows
+
+
+def foreign_actor_events(qids: list[str], country: str = "Q39") -> set[str]:
+    """Items whose named participants are all foreign.
+
+    The brief excludes "events dominated by foreign actors" outside block E,
+    because the validation references (Smartvote, roll-call votes, MARPOR and
+    CHES) only cover Swiss actors. P710 (participant) operationalises it: the
+    2021 Geneva summit lists Biden and Putin, while the Credit Suisse takeover
+    lists Credit Suisse and UBS. An item with no participants at all is not
+    excluded -- absence of the property is not evidence of foreignness.
+    """
+    if not qids:
+        return set()
+    values = " ".join(f"wd:{q}" for q in sorted(set(qids)))
+    rows = sparql(
+        "SELECT ?item (COUNT(DISTINCT ?part) AS ?n_part) "
+        "(COUNT(DISTINCT ?local) AS ?n_local) WHERE {\n"
+        f"  VALUES ?item {{ {values} }}\n"
+        "  ?item wdt:P710 ?part .\n"
+        "  OPTIONAL { ?part (wdt:P27|wdt:P17) wd:" + country + " .\n"
+        "             BIND(?part AS ?local) }\n"
+        "}\nGROUP BY ?item"
+    )
+    return {
+        qid(r["item"])
+        for r in rows
+        if int(r["n_part"]) > 0 and int(r["n_local"]) == 0
+    }

@@ -122,3 +122,105 @@ def block_d(
         ],
     }
     return chosen, trace
+
+
+# ------------------------------------------------ blocks B, C, E (Wikidata) ----
+
+
+def _pool_excluding(
+    pool: list[dict[str, Any]], excluded_types: set[str]
+) -> list[dict[str, Any]]:
+    """Drop items whose every type is excluded, keep the ranking by sitelinks.
+
+    An item is dropped only if *all* its P31 values are excluded. A takeover
+    that is also tagged as some sport-adjacent class should survive on the
+    strength of the type that matters.
+    """
+    kept = []
+    for r in pool:
+        types = r.get("type_qids") or []
+        if types and all(t in excluded_types for t in types):
+            continue
+        kept.append(r)
+    return sorted(kept, key=lambda r: (-r["sitelinks"], r["qid"]))
+
+
+def block_b(
+    elections: list[dict[str, Any]],
+) -> tuple[list[dict[str, Any]], dict[str, Any]]:
+    """Every Federal Council election in the window -- no ranking, no cut.
+
+    The block exists as the easy reference case: the electors are the two
+    chambers, the candidates are few and named, so a linking error is visible
+    rather than buried. Taking the complete enumeration instead of a top-N
+    removes the last place a choice could hide.
+    """
+    chosen = sorted(elections, key=lambda r: r["date"])
+    for r in chosen:
+        r["_block"] = "B"
+        r["_cell"] = "federal council election"
+    return chosen, {
+        "rule": "every item of type Q1006573 (Swiss Federal Council election) "
+                "with a day-precision date in the window",
+        "n": len(chosen),
+        "dates": [r["date"] for r in chosen],
+    }
+
+
+def block_c(
+    pool: list[dict[str, Any]],
+    excluded_types: set[str],
+    excluded_qids: set[str],
+    n: int,
+) -> tuple[list[dict[str, Any]], dict[str, Any]]:
+    """Swiss events not carried by the institutional calendar.
+
+    NOT "unplanned" in the strict sense: Wikidata knows only two genuinely
+    unplanned Swiss events over the whole seven-year window, so the criterion
+    is relaxed one notch and said out loud. The women's strike was announced
+    months ahead; what it shares with the other two is that no institution put
+    it on the calendar.
+    """
+    ranked = [
+        r for r in _pool_excluding(pool, excluded_types)
+        if r["qid"] not in excluded_qids
+    ]
+    chosen = ranked[:n]
+    for r in chosen:
+        r["_block"] = "C"
+        r["_cell"] = "non-institutional"
+    return chosen, {
+        "rule": "Swiss events (P17=Q39), day-precision date in window, "
+                "sport/entertainment and votes/elections excluded by class "
+                "hierarchy, events with only foreign participants excluded "
+                "via P710, top-N by sitelinks",
+        "pool_after_exclusions": len(ranked),
+        "excluded_foreign_actors": sorted(excluded_qids),
+        "chosen": [r["qid"] for r in chosen],
+        "next_unchosen": [r["qid"] for r in ranked[n : n + 3]],
+    }
+
+
+def block_e(
+    pool: list[dict[str, Any]], excluded_types: set[str], n: int
+) -> tuple[list[dict[str, Any]], dict[str, Any]]:
+    """International events, diagnostic only, never in the calibration set.
+
+    Their one job is identical actors on both sides of the Roestigraben, so
+    that any separation measured here is the language confounder and nothing
+    else. Switzerland's neighbours are excluded at query time: a French or
+    German national event is covered asymmetrically by the corresponding
+    language region, which is exactly the artefact this block must not carry.
+    """
+    ranked = _pool_excluding(pool, excluded_types)
+    chosen = ranked[:n]
+    for r in chosen:
+        r["_block"] = "E"
+        r["_cell"] = "diagnostic"
+    return chosen, {
+        "rule": "non-Swiss, non-neighbour events, day-precision date in window, "
+                "sport/entertainment excluded by class hierarchy, top-N by sitelinks",
+        "pool_after_exclusions": len(ranked),
+        "chosen": [r["qid"] for r in chosen],
+        "next_unchosen": [r["qid"] for r in ranked[n : n + 3]],
+    }
