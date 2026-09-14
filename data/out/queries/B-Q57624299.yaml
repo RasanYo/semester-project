@@ -1,0 +1,63 @@
+query:
+  sources:
+  - NZZ
+  - NZZO
+  - NZZS
+  - TA
+  - NNTA
+  - TAS
+  - BZ
+  - NNBE
+  - BU
+  - NNBU
+  - BAZ
+  - NNBS
+  - BLI
+  - BLIO
+  - SGT
+  - SGTO
+  - AZM
+  - LUZ
+  - ZWA
+  - ZWAO
+  - SRF
+  - WEW
+  - WOZ
+  - TPS
+  - TPSO
+  - TDG
+  - NNTDG
+  - HEU
+  - NNHEU
+  - TLMD
+  - NNTLM
+  - RTS
+  - ZWAS
+  - ZWSO
+  dates:
+  - from: '2018-11-05'
+    to: '2018-12-19'
+  languages:
+  - de
+  - fr
+result:
+  format: TSV
+  maxResults: 1000000
+  columns:
+  - id
+  - pubtime
+  - medium_code
+  - medium_name
+  - rubric
+  - regional
+  - doctype
+  - doctype_description
+  - language
+  - char_count
+  - dateline
+  - head
+  - subhead
+  - article_link
+  - content_id
+  - content
+version: 1.2

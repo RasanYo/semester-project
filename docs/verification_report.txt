@@ -1,0 +1,168 @@
+
+==============================================================================
+1. THE DATASET
+==============================================================================
+events      20
+   A   8  federal popular votes
+   B   4  Federal Council elections
+   C   3  non-institutional Swiss
+   D   1  consensual control
+   E   4  international (diagnostic)
+entity rows 304  (65 distinct QIDs, 2 language rows per actor)
+queries     20 YAML files, none submitted
+
+==============================================================================
+2. RECONCILIATION
+==============================================================================
+   matched                304  100.0%
+
+   reconciled 304/304 (100.0%) | NIL 0 | needs review 0
+
+   by source:
+                                 rows  nil
+source                                    
+curia:Rapporteur                   52    0
+swissvotes:party_recommendation   150    0
+wikidata:P39                       66    0
+wikidata:event_actor               36    0
+
+   READ THIS BEFORE BELIEVING THE NUMBER ABOVE.
+   100% is the ceiling of an identifier join, not evidence that
+   entity linking works. Every actor here arrived through a key:
+     * parties      -- short name + life dates, no string search
+     * people       -- PersonNumber -> P1307, an external identifier
+     * event actors -- item-to-item links inside Wikidata
+   Not one row was produced by matching a surface form found in
+   text. That is deliberate: this file is the ANSWER KEY, and an
+   answer key built by fuzzy matching would be worthless. The linker
+   is tested when article text arrives and is scored against it.
+
+   events carrying NO reference actor: 3/20 -> ['C-Q55972779', 'C-Q64605546', 'E-Q116691303']
+   These keep their use for the agenda-controlled comparison; they
+   lose their use as linking test cases. Wikidata names no actor for
+   them, and that is reported rather than patched.
+
+   reference actors per event: min 0, median 9, max 12
+
+==============================================================================
+3. HARD CASE -- UDC / SVP / Swiss People's Party is ONE node
+==============================================================================
+   label[de]  Schweizerische Volkspartei
+   label[fr]  Union démocratique du centre
+   label[it]  Unione Democratica di Centro
+   label[en]  Swiss People's Party
+   P1813      SVP@de, UDC@fr, UDC@it, PPS@rm, SVP/UDC@en
+   in dataset the p-svp column resolves to: ['Q385258']  -> ONE node
+
+   What a naive string lookup would have done instead:
+     'UDC' in fr: Q385258=Union démocratique du centre | Q1628993=Union démocratique de Catalo | Q18347306=Coalition pour un changement | Q7887679=United Daughters of the Conf | Q47781=Union de Centre
+     'SVP' in fr: Q606620=Parti populaire sud-tyrolien | Q385258=Union démocratique du centre | Q11307381=senior vice president | Q18031959=NR2F2 | Q98132905=SVP
+
+==============================================================================
+4. HARD CASE -- 'Le Centre' is a lexical collision
+==============================================================================
+   'Le Centre' (fr):
+     Q100934025   Le Centre                          parti politique suisse
+     Q27956567    partie centrale                    élément à utiliser en valeur du qualificatif
+     Q59389219    Keramis Centre De La Céramique     musée belge de la céramique à La Louvière
+     Q3886628     Centre hospitalier Princesse-Gra   hôpital publique
+     Q2944883     Le Centre Sheraton Montréal Hote   gratte-ciel canadien
+     Q120744533   Le Centre                          journal local de Montluçon (Allier) (1875-19
+   'Die Mitte' (de):
+     Q1468524     Stadtkern                          Zentralbereich einer Stadt
+     Q100934025   Die Mitte                          Schweizer Partei
+     Q12764643    Die Mitte                          deutscher Film über die Suche nach der Mitte
+     Q1219037     Die Mitte                          Geschäftshaus auf dem Alexanderplatz im Berl
+     Q106718073   Die Mitte                          Dokumentarfilm
+     Q51505491    Die mitteleuropäischen Eichengal   Publikation (1870–1871) von Gustav L. Mayr
+
+   The pipeline never searches these strings: the p-mitte column is
+   resolved by short name + life dates, so the collision cannot fire.
+
+==============================================================================
+5. HARD CASE -- the CVP + BDP -> Die Mitte transition of 2021-01-01
+==============================================================================
+   2020-11-29  p-cvp->Q659461     (matched)  p-bdp->Q151768     (matched)  p-mitte->NIL         (nil_none_alive)
+   2021-03-07  p-cvp->NIL         (nil_none_alive)  p-bdp->NIL         (nil_none_alive)  p-mitte->Q100934025  (matched)
+   2024-03-03  p-cvp->NIL         (nil_none_alive)  p-bdp->NIL         (nil_none_alive)  p-mitte->Q100934025  (matched)
+
+   distinct centre-party QIDs in the dataset: ['Q100934025', 'Q659461']
+   Two nodes, correctly: one lineage, two legal entities. A pre-2021
+   mention on the Die Mitte node would be an anachronism.
+
+==============================================================================
+6. HARD CASE -- homonyms among the people in the dataset
+==============================================================================
+   26 distinct people reached through PersonNumber -> P1307
+   exact-label collisions: 3/26
+     'Marcel Dettling':
+        Q21180915    Schweizer Politiker (SVP)
+        Q102267672   Ph.D. ETH Zürich 2004
+     'Roger Nordmann':
+        Q120724      Schweizer Politiker
+        Q3439322     Schweizer Journalist und Werbefachmann
+        Q2161809     Wikimedia-Begriffsklärungsseite
+        Q19999647    
+        Q72855746    
+     'Thomas Hefti':
+        Q16021674    Ständerat, Ständeratspräsident 21/22
+        Q131670691   Schaffhauser Politiker (1873-1952)
+
+   None of these can reach the dataset: P1307 is an external
+   identifier whose literal value IS the PersonNumber, so no string
+   is ever matched for a person.
+
+==============================================================================
+7. SWISSDOX QUERIES -- validated, nothing pulled
+==============================================================================
+   20/20 queries validate against the live API (test=1)
+   No query was submitted for compilation: no article was downloaded.
+   Volume cannot be known before pulling -- estimateResults is
+   confirmed useless (1 against an actual 1,953), and `content` is a
+   mandatory column, so there is no cheap metadata-only count. Sizing
+   needs one calibration pull, then linear extrapolation.
+
+==============================================================================
+8. PROVENANCE
+==============================================================================
+   sources recorded: 12
+     swissvotes_dataset          2,720,656 B  5c32d0d6e61e9ce9...
+     swissvotes_codebook           418,704 B  8f2911a0f18e5d4f...
+     staatsebenen_667              254,118 B  2519cd32f19e5f56...
+     staatsebenen_668              253,952 B  daead9a71f7663a5...
+     staatsebenen_669              254,262 B  27d4fac5ff9809d2...
+     staatsebenen_670              255,099 B  00bf1e7b19d0ddcd...
+     bfs_ogd_20240922            1,977,268 B  f4e9a5d2b4a4d213...
+     staatsebenen_673              253,629 B  2f2ee7ada0b1a8e1...
+     staatsebenen_674              254,227 B  8672b8ef7e948e1f...
+     staatsebenen_675              254,410 B  13efe26ce15ebed8...
+     staatsebenen_676              255,013 B  64b50626fd47e9fc...
+     swissdox_sources               37,266 B  50b50fb04bb51766...
+
+   cantonal-gap repairs: 10 objects
+     anr 667 <- swissvotes:staatsebenen-de.xlsx
+     anr 668 <- swissvotes:staatsebenen-de.xlsx
+     anr 669 <- swissvotes:staatsebenen-de.xlsx
+     anr 670 <- swissvotes:staatsebenen-de.xlsx
+     anr 671 <- bfs:ogd-static.voteinfo-app.ch
+     anr 672 <- bfs:ogd-static.voteinfo-app.ch
+     anr 673 <- swissvotes:staatsebenen-de.xlsx
+     anr 674 <- swissvotes:staatsebenen-de.xlsx
+     anr 675 <- swissvotes:staatsebenen-de.xlsx
+     anr 676 <- swissvotes:staatsebenen-de.xlsx
+
+==============================================================================
+9. WHAT THIS DATASET CANNOT DO
+==============================================================================
+   * The French side of Swissdox is one publisher group (TX Group)
+     plus Le Temps and rts.ch. Le Nouvelliste, La Liberte, ArcInfo,
+     Le Courrier and Le Quotidien Jurassien are absent from the
+     corpus. Language and ownership are collinear by construction.
+   * No news agency is in the corpus, so wire copy appears under
+     several medium codes. Near-duplicate detection is required
+     before any co-positioning claim.
+   * Italian Switzerland is rsi.ch alone.
+   * Block E is diagnostic and never enters the calibration set.
+   * Block C is 'non-institutional', not 'unplanned': Wikidata knows
+     only two genuinely unplanned Swiss events in the whole window.
+

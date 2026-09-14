@@ -1,0 +1,305 @@
+event_id,qid,label,role,lang,surface_form,source,source_key,match_status
+A-628,Q121882,Ida Glanzmann-Hunkeler,rapporteur,de,Ida Glanzmann-Hunkeler,curia:Rapporteur,PersonNumber:1337,matched
+A-628,Q121882,Ida Glanzmann-Hunkeler,rapporteur,fr,Ida Glanzmann-Hunkeler,curia:Rapporteur,PersonNumber:1337,matched
+A-628,Q16739430,Pierre-Alain Fridez,rapporteur,de,Pierre-Alain Fridez,curia:Rapporteur,PersonNumber:4074,matched
+A-628,Q16739430,Pierre-Alain Fridez,rapporteur,fr,Pierre-Alain Fridez,curia:Rapporteur,PersonNumber:4074,matched
+A-628,Q1310215,Josef Dittli,rapporteur,de,Josef Dittli,curia:Rapporteur,PersonNumber:4151,matched
+A-628,Q1310215,Josef Dittli,rapporteur,fr,Josef Dittli,curia:Rapporteur,PersonNumber:4151,matched
+A-628,Q151768,Bürgerlich-Demokratische Partei,recommends_yes,de,Bürgerlich-Demokratische Partei,swissvotes:party_recommendation,p-bdp,matched
+A-628,Q151768,Parti bourgeois démocratique,recommends_yes,fr,Parti bourgeois démocratique,swissvotes:party_recommendation,p-bdp,matched
+A-628,Q659461,Christlichdemokratische Volkspartei,recommends_yes,de,Christlichdemokratische Volkspartei,swissvotes:party_recommendation,p-cvp,matched
+A-628,Q659461,Parti démocrate-chrétien,recommends_yes,fr,Parti démocrate-chrétien,swissvotes:party_recommendation,p-cvp,matched
+A-628,Q667836,Eidgenössisch-Demokratische Union,recommends_no,de,Eidgenössisch-Demokratische Union,swissvotes:party_recommendation,p-edu,matched
+A-628,Q667836,Union démocratique fédérale,recommends_no,fr,Union démocratique fédérale,swissvotes:party_recommendation,p-edu,matched
+A-628,Q667718,Evangelische Volkspartei,recommends_yes,de,Evangelische Volkspartei,swissvotes:party_recommendation,p-evp,matched
+A-628,Q667718,Parti évangélique suisse,recommends_yes,fr,Parti évangélique suisse,swissvotes:party_recommendation,p-evp,matched
+A-628,Q202638,FDP.Die Liberalen,recommends_yes,de,FDP.Die Liberalen,swissvotes:party_recommendation,p-fdp,matched
+A-628,Q202638,Parti libéral-radical,recommends_yes,fr,Parti libéral-radical,swissvotes:party_recommendation,p-fdp,matched
+A-628,Q545900,Grünliberale Partei,recommends_yes,de,Grünliberale Partei,swissvotes:party_recommendation,p-glp,matched
+A-628,Q545900,Vert'libéraux,recommends_yes,fr,Vert'libéraux,swissvotes:party_recommendation,p-glp,matched
+A-628,Q659739,Grüne Partei der Schweiz,recommends_yes,de,Grüne Partei der Schweiz,swissvotes:party_recommendation,p-gps,matched
+A-628,Q659739,Les Verts Suisse,recommends_yes,fr,Les Verts Suisse,swissvotes:party_recommendation,p-gps,matched
+A-628,Q303745,Sozialdemokratische Partei der Schweiz,recommends_yes,de,Sozialdemokratische Partei der Schweiz,swissvotes:party_recommendation,p-sps,matched
+A-628,Q303745,Parti socialiste suisse,recommends_yes,fr,Parti socialiste suisse,swissvotes:party_recommendation,p-sps,matched
+A-628,Q385258,Schweizerische Volkspartei,recommends_no,de,Schweizerische Volkspartei,swissvotes:party_recommendation,p-svp,matched
+A-628,Q385258,Union démocratique du centre,recommends_no,fr,Union démocratique du centre,swissvotes:party_recommendation,p-svp,matched
+A-631,Q121470,Kurt Fluri,rapporteur,de,Kurt Fluri,curia:Rapporteur,PersonNumber:1122,matched
+A-631,Q121470,Kurt Fluri,rapporteur,fr,Kurt Fluri,curia:Rapporteur,PersonNumber:1122,matched
+A-631,Q1160790,Daniel Fässler,rapporteur,de,Daniel Fässler,curia:Rapporteur,PersonNumber:4056,matched
+A-631,Q1160790,Daniel Fässler,rapporteur,fr,Daniel Fässler,curia:Rapporteur,PersonNumber:4056,matched
+A-631,Q18413490,Valérie Piller Carrard,rapporteur,de,Valérie Piller Carrard,curia:Rapporteur,PersonNumber:4109,matched
+A-631,Q18413490,Valérie Piller Carrard,rapporteur,fr,Valérie Piller Carrard,curia:Rapporteur,PersonNumber:4109,matched
+A-631,Q151768,Bürgerlich-Demokratische Partei,recommends_no,de,Bürgerlich-Demokratische Partei,swissvotes:party_recommendation,p-bdp,matched
+A-631,Q151768,Parti bourgeois démocratique,recommends_no,fr,Parti bourgeois démocratique,swissvotes:party_recommendation,p-bdp,matched
+A-631,Q659461,Christlichdemokratische Volkspartei,recommends_no,de,Christlichdemokratische Volkspartei,swissvotes:party_recommendation,p-cvp,matched
+A-631,Q659461,Parti démocrate-chrétien,recommends_no,fr,Parti démocrate-chrétien,swissvotes:party_recommendation,p-cvp,matched
+A-631,Q667836,Eidgenössisch-Demokratische Union,recommends_yes,de,Eidgenössisch-Demokratische Union,swissvotes:party_recommendation,p-edu,matched
+A-631,Q667836,Union démocratique fédérale,recommends_yes,fr,Union démocratique fédérale,swissvotes:party_recommendation,p-edu,matched
+A-631,Q667718,Evangelische Volkspartei,recommends_no,de,Evangelische Volkspartei,swissvotes:party_recommendation,p-evp,matched
+A-631,Q667718,Parti évangélique suisse,recommends_no,fr,Parti évangélique suisse,swissvotes:party_recommendation,p-evp,matched
+A-631,Q202638,FDP.Die Liberalen,recommends_no,de,FDP.Die Liberalen,swissvotes:party_recommendation,p-fdp,matched
+A-631,Q202638,Parti libéral-radical,recommends_no,fr,Parti libéral-radical,swissvotes:party_recommendation,p-fdp,matched
+A-631,Q545900,Grünliberale Partei,recommends_no,de,Grünliberale Partei,swissvotes:party_recommendation,p-glp,matched
+A-631,Q545900,Vert'libéraux,recommends_no,fr,Vert'libéraux,swissvotes:party_recommendation,p-glp,matched
+A-631,Q659739,Grüne Partei der Schweiz,recommends_no,de,Grüne Partei der Schweiz,swissvotes:party_recommendation,p-gps,matched
+A-631,Q659739,Les Verts Suisse,recommends_no,fr,Les Verts Suisse,swissvotes:party_recommendation,p-gps,matched
+A-631,Q303745,Sozialdemokratische Partei der Schweiz,recommends_no,de,Sozialdemokratische Partei der Schweiz,swissvotes:party_recommendation,p-sps,matched
+A-631,Q303745,Parti socialiste suisse,recommends_no,fr,Parti socialiste suisse,swissvotes:party_recommendation,p-sps,matched
+A-631,Q385258,Schweizerische Volkspartei,recommends_yes,de,Schweizerische Volkspartei,swissvotes:party_recommendation,p-svp,matched
+A-631,Q385258,Union démocratique du centre,recommends_yes,fr,Union démocratique du centre,swissvotes:party_recommendation,p-svp,matched
+A-636,Q118535,Christa Markwalder,rapporteur,de,Christa Markwalder,curia:Rapporteur,PersonNumber:1139,matched
+A-636,Q118535,Christa Markwalder,rapporteur,fr,Christa Markwalder,curia:Rapporteur,PersonNumber:1139,matched
+A-636,Q16021674,Thomas Hefti,rapporteur,de,Thomas Hefti,curia:Rapporteur,PersonNumber:4139,matched
+A-636,Q16021674,Thomas Hefti,rapporteur,fr,Thomas Hefti,curia:Rapporteur,PersonNumber:4139,matched
+A-636,Q21694713,Laurence Fehlmann Rielle,rapporteur,de,Laurence Fehlmann Rielle,curia:Rapporteur,PersonNumber:4195,matched
+A-636,Q21694713,Laurence Fehlmann Rielle,rapporteur,fr,Laurence Fehlmann Rielle,curia:Rapporteur,PersonNumber:4195,matched
+A-636,Q151768,Bürgerlich-Demokratische Partei,recommends_yes,de,Bürgerlich-Demokratische Partei,swissvotes:party_recommendation,p-bdp,matched
+A-636,Q151768,Parti bourgeois démocratique,recommends_yes,fr,Parti bourgeois démocratique,swissvotes:party_recommendation,p-bdp,matched
+A-636,Q659461,Christlichdemokratische Volkspartei,recommends_no,de,Christlichdemokratische Volkspartei,swissvotes:party_recommendation,p-cvp,matched
+A-636,Q659461,Parti démocrate-chrétien,recommends_no,fr,Parti démocrate-chrétien,swissvotes:party_recommendation,p-cvp,matched
+A-636,Q667836,Eidgenössisch-Demokratische Union,recommends_yes,de,Eidgenössisch-Demokratische Union,swissvotes:party_recommendation,p-edu,matched
+A-636,Q667836,Union démocratique fédérale,recommends_yes,fr,Union démocratique fédérale,swissvotes:party_recommendation,p-edu,matched
+A-636,Q667718,Evangelische Volkspartei,recommends_yes,de,Evangelische Volkspartei,swissvotes:party_recommendation,p-evp,matched
+A-636,Q667718,Parti évangélique suisse,recommends_yes,fr,Parti évangélique suisse,swissvotes:party_recommendation,p-evp,matched
+A-636,Q202638,FDP.Die Liberalen,recommends_no,de,FDP.Die Liberalen,swissvotes:party_recommendation,p-fdp,matched
+A-636,Q202638,Parti libéral-radical,recommends_no,fr,Parti libéral-radical,swissvotes:party_recommendation,p-fdp,matched
+A-636,Q545900,Grünliberale Partei,recommends_yes,de,Grünliberale Partei,swissvotes:party_recommendation,p-glp,matched
+A-636,Q545900,Vert'libéraux,recommends_yes,fr,Vert'libéraux,swissvotes:party_recommendation,p-glp,matched
+A-636,Q659739,Grüne Partei der Schweiz,recommends_yes,de,Grüne Partei der Schweiz,swissvotes:party_recommendation,p-gps,matched
+A-636,Q659739,Les Verts Suisse,recommends_yes,fr,Les Verts Suisse,swissvotes:party_recommendation,p-gps,matched
+A-636,Q303745,Sozialdemokratische Partei der Schweiz,recommends_yes,de,Sozialdemokratische Partei der Schweiz,swissvotes:party_recommendation,p-sps,matched
+A-636,Q303745,Parti socialiste suisse,recommends_yes,fr,Parti socialiste suisse,swissvotes:party_recommendation,p-sps,matched
+A-636,Q385258,Schweizerische Volkspartei,recommends_no,de,Schweizerische Volkspartei,swissvotes:party_recommendation,p-svp,matched
+A-636,Q385258,Union démocratique du centre,recommends_no,fr,Union démocratique du centre,swissvotes:party_recommendation,p-svp,matched
+A-641,Q693305,Ruedi Noser,rapporteur,de,Ruedi Noser,curia:Rapporteur,PersonNumber:1153,matched
+A-641,Q693305,Ruedi Noser,rapporteur,fr,Ruedi Noser,curia:Rapporteur,PersonNumber:1153,matched
+A-641,Q1475381,Olivier Feller,rapporteur,de,Olivier Feller,curia:Rapporteur,PersonNumber:4077,matched
+A-641,Q1475381,Olivier Feller,rapporteur,fr,Olivier Feller,curia:Rapporteur,PersonNumber:4077,matched
+A-641,Q21180915,Marcel Dettling,rapporteur,de,Marcel Dettling,curia:Rapporteur,PersonNumber:4160,matched
+A-641,Q21180915,Marcel Dettling,rapporteur,fr,Marcel Dettling,curia:Rapporteur,PersonNumber:4160,matched
+A-641,Q667836,Eidgenössisch-Demokratische Union,recommends_no,de,Eidgenössisch-Demokratische Union,swissvotes:party_recommendation,p-edu,matched
+A-641,Q667836,Union démocratique fédérale,recommends_no,fr,Union démocratique fédérale,swissvotes:party_recommendation,p-edu,matched
+A-641,Q667718,Evangelische Volkspartei,recommends_yes,de,Evangelische Volkspartei,swissvotes:party_recommendation,p-evp,matched
+A-641,Q667718,Parti évangélique suisse,recommends_yes,fr,Parti évangélique suisse,swissvotes:party_recommendation,p-evp,matched
+A-641,Q202638,FDP.Die Liberalen,recommends_no,de,FDP.Die Liberalen,swissvotes:party_recommendation,p-fdp,matched
+A-641,Q202638,Parti libéral-radical,recommends_no,fr,Parti libéral-radical,swissvotes:party_recommendation,p-fdp,matched
+A-641,Q545900,Grünliberale Partei,recommends_yes,de,Grünliberale Partei,swissvotes:party_recommendation,p-glp,matched
+A-641,Q545900,Vert'libéraux,recommends_yes,fr,Vert'libéraux,swissvotes:party_recommendation,p-glp,matched
+A-641,Q659739,Grüne Partei der Schweiz,recommends_yes,de,Grüne Partei der Schweiz,swissvotes:party_recommendation,p-gps,matched
+A-641,Q659739,Les Verts Suisse,recommends_yes,fr,Les Verts Suisse,swissvotes:party_recommendation,p-gps,matched
+A-641,Q100934025,Die Mitte,recommends_no,de,Die Mitte,swissvotes:party_recommendation,p-mitte,matched
+A-641,Q100934025,Le Centre,recommends_no,fr,Le Centre,swissvotes:party_recommendation,p-mitte,matched
+A-641,Q303745,Sozialdemokratische Partei der Schweiz,recommends_yes,de,Sozialdemokratische Partei der Schweiz,swissvotes:party_recommendation,p-sps,matched
+A-641,Q303745,Parti socialiste suisse,recommends_yes,fr,Parti socialiste suisse,swissvotes:party_recommendation,p-sps,matched
+A-641,Q385258,Schweizerische Volkspartei,recommends_no,de,Schweizerische Volkspartei,swissvotes:party_recommendation,p-svp,matched
+A-641,Q385258,Union démocratique du centre,recommends_no,fr,Union démocratique du centre,swissvotes:party_recommendation,p-svp,matched
+A-644,Q120724,Roger Nordmann,rapporteur,de,Roger Nordmann,curia:Rapporteur,PersonNumber:1279,matched
+A-644,Q120724,Roger Nordmann,rapporteur,fr,Roger Nordmann,curia:Rapporteur,PersonNumber:1279,matched
+A-644,Q1307140,Stefan Müller-Altermatt,rapporteur,de,Stefan Müller-Altermatt,curia:Rapporteur,PersonNumber:4063,matched
+A-644,Q1307140,Stefan Müller-Altermatt,rapporteur,fr,Stefan Müller-Altermatt,curia:Rapporteur,PersonNumber:4063,matched
+A-644,Q21294675,Benoît Genecand,rapporteur,de,Benoît Genecand,curia:Rapporteur,PersonNumber:4191,matched
+A-644,Q21294675,Benoît Genecand,rapporteur,fr,Benoît Genecand,curia:Rapporteur,PersonNumber:4191,matched
+A-644,Q23060196,Damian Müller,rapporteur,de,Damian Müller,curia:Rapporteur,PersonNumber:4207,matched
+A-644,Q23060196,Damian Müller,rapporteur,fr,Damian Müller,curia:Rapporteur,PersonNumber:4207,matched
+A-644,Q667836,Eidgenössisch-Demokratische Union,recommends_no,de,Eidgenössisch-Demokratische Union,swissvotes:party_recommendation,p-edu,matched
+A-644,Q667836,Union démocratique fédérale,recommends_no,fr,Union démocratique fédérale,swissvotes:party_recommendation,p-edu,matched
+A-644,Q667718,Evangelische Volkspartei,recommends_yes,de,Evangelische Volkspartei,swissvotes:party_recommendation,p-evp,matched
+A-644,Q667718,Parti évangélique suisse,recommends_yes,fr,Parti évangélique suisse,swissvotes:party_recommendation,p-evp,matched
+A-644,Q202638,FDP.Die Liberalen,recommends_yes,de,FDP.Die Liberalen,swissvotes:party_recommendation,p-fdp,matched
+A-644,Q202638,Parti libéral-radical,recommends_yes,fr,Parti libéral-radical,swissvotes:party_recommendation,p-fdp,matched
+A-644,Q545900,Grünliberale Partei,recommends_yes,de,Grünliberale Partei,swissvotes:party_recommendation,p-glp,matched
+A-644,Q545900,Vert'libéraux,recommends_yes,fr,Vert'libéraux,swissvotes:party_recommendation,p-glp,matched
+A-644,Q659739,Grüne Partei der Schweiz,recommends_yes,de,Grüne Partei der Schweiz,swissvotes:party_recommendation,p-gps,matched
+A-644,Q659739,Les Verts Suisse,recommends_yes,fr,Les Verts Suisse,swissvotes:party_recommendation,p-gps,matched
+A-644,Q100934025,Die Mitte,recommends_yes,de,Die Mitte,swissvotes:party_recommendation,p-mitte,matched
+A-644,Q100934025,Le Centre,recommends_yes,fr,Le Centre,swissvotes:party_recommendation,p-mitte,matched
+A-644,Q303745,Sozialdemokratische Partei der Schweiz,recommends_yes,de,Sozialdemokratische Partei der Schweiz,swissvotes:party_recommendation,p-sps,matched
+A-644,Q303745,Parti socialiste suisse,recommends_yes,fr,Parti socialiste suisse,swissvotes:party_recommendation,p-sps,matched
+A-644,Q385258,Schweizerische Volkspartei,recommends_no,de,Schweizerische Volkspartei,swissvotes:party_recommendation,p-svp,matched
+A-644,Q385258,Union démocratique du centre,recommends_no,fr,Union démocratique du centre,swissvotes:party_recommendation,p-svp,matched
+A-650,Q118308,Christian Levrat,rapporteur,de,Christian Levrat,curia:Rapporteur,PersonNumber:1150,matched
+A-650,Q118308,Christian Levrat,rapporteur,fr,Christian Levrat,curia:Rapporteur,PersonNumber:1150,matched
+A-650,Q667836,Eidgenössisch-Demokratische Union,recommends_no,de,Eidgenössisch-Demokratische Union,swissvotes:party_recommendation,p-edu,matched
+A-650,Q667836,Union démocratique fédérale,recommends_no,fr,Union démocratique fédérale,swissvotes:party_recommendation,p-edu,matched
+A-650,Q667718,Evangelische Volkspartei,recommends_yes,de,Evangelische Volkspartei,swissvotes:party_recommendation,p-evp,matched
+A-650,Q667718,Parti évangélique suisse,recommends_yes,fr,Parti évangélique suisse,swissvotes:party_recommendation,p-evp,matched
+A-650,Q202638,FDP.Die Liberalen,recommends_yes,de,FDP.Die Liberalen,swissvotes:party_recommendation,p-fdp,matched
+A-650,Q202638,Parti libéral-radical,recommends_yes,fr,Parti libéral-radical,swissvotes:party_recommendation,p-fdp,matched
+A-650,Q545900,Grünliberale Partei,recommends_yes,de,Grünliberale Partei,swissvotes:party_recommendation,p-glp,matched
+A-650,Q545900,Vert'libéraux,recommends_yes,fr,Vert'libéraux,swissvotes:party_recommendation,p-glp,matched
+A-650,Q659739,Grüne Partei der Schweiz,recommends_yes,de,Grüne Partei der Schweiz,swissvotes:party_recommendation,p-gps,matched
+A-650,Q659739,Les Verts Suisse,recommends_yes,fr,Les Verts Suisse,swissvotes:party_recommendation,p-gps,matched
+A-650,Q100934025,Die Mitte,recommends_yes,de,Die Mitte,swissvotes:party_recommendation,p-mitte,matched
+A-650,Q100934025,Le Centre,recommends_yes,fr,Le Centre,swissvotes:party_recommendation,p-mitte,matched
+A-650,Q303745,Sozialdemokratische Partei der Schweiz,recommends_yes,de,Sozialdemokratische Partei der Schweiz,swissvotes:party_recommendation,p-sps,matched
+A-650,Q303745,Parti socialiste suisse,recommends_yes,fr,Parti socialiste suisse,swissvotes:party_recommendation,p-sps,matched
+A-650,Q385258,Schweizerische Volkspartei,recommends_no,de,Schweizerische Volkspartei,swissvotes:party_recommendation,p-svp,matched
+A-650,Q385258,Union démocratique du centre,recommends_no,fr,Union démocratique du centre,swissvotes:party_recommendation,p-svp,matched
+A-659,Q118493,Thomas de Courten,rapporteur,de,Thomas de Courten,curia:Rapporteur,PersonNumber:4051,matched
+A-659,Q118493,Thomas de Courten,rapporteur,fr,Thomas de Courten,curia:Rapporteur,PersonNumber:4051,matched
+A-659,Q16669767,Philippe Nantermod,rapporteur,de,Philippe Nantermod,curia:Rapporteur,PersonNumber:4193,matched
+A-659,Q16669767,Philippe Nantermod,rapporteur,fr,Philippe Nantermod,curia:Rapporteur,PersonNumber:4193,matched
+A-659,Q23061004,Erich Ettlin,rapporteur,de,Erich Ettlin,curia:Rapporteur,PersonNumber:4206,matched
+A-659,Q23061004,Erich Ettlin,rapporteur,fr,Erich Ettlin,curia:Rapporteur,PersonNumber:4206,matched
+A-659,Q667836,Eidgenössisch-Demokratische Union,recommends_yes,de,Eidgenössisch-Demokratische Union,swissvotes:party_recommendation,p-edu,matched
+A-659,Q667836,Union démocratique fédérale,recommends_yes,fr,Union démocratique fédérale,swissvotes:party_recommendation,p-edu,matched
+A-659,Q667718,Evangelische Volkspartei,recommends_yes,de,Evangelische Volkspartei,swissvotes:party_recommendation,p-evp,matched
+A-659,Q667718,Parti évangélique suisse,recommends_yes,fr,Parti évangélique suisse,swissvotes:party_recommendation,p-evp,matched
+A-659,Q202638,FDP.Die Liberalen,recommends_yes,de,FDP.Die Liberalen,swissvotes:party_recommendation,p-fdp,matched
+A-659,Q202638,Parti libéral-radical,recommends_yes,fr,Parti libéral-radical,swissvotes:party_recommendation,p-fdp,matched
+A-659,Q545900,Grünliberale Partei,recommends_yes,de,Grünliberale Partei,swissvotes:party_recommendation,p-glp,matched
+A-659,Q545900,Vert'libéraux,recommends_yes,fr,Vert'libéraux,swissvotes:party_recommendation,p-glp,matched
+A-659,Q659739,Grüne Partei der Schweiz,recommends_no,de,Grüne Partei der Schweiz,swissvotes:party_recommendation,p-gps,matched
+A-659,Q659739,Les Verts Suisse,recommends_no,fr,Les Verts Suisse,swissvotes:party_recommendation,p-gps,matched
+A-659,Q100934025,Die Mitte,recommends_yes,de,Die Mitte,swissvotes:party_recommendation,p-mitte,matched
+A-659,Q100934025,Le Centre,recommends_yes,fr,Le Centre,swissvotes:party_recommendation,p-mitte,matched
+A-659,Q303745,Sozialdemokratische Partei der Schweiz,recommends_no,de,Sozialdemokratische Partei der Schweiz,swissvotes:party_recommendation,p-sps,matched
+A-659,Q303745,Parti socialiste suisse,recommends_no,fr,Parti socialiste suisse,swissvotes:party_recommendation,p-sps,matched
+A-659,Q385258,Schweizerische Volkspartei,recommends_yes,de,Schweizerische Volkspartei,swissvotes:party_recommendation,p-svp,matched
+A-659,Q385258,Union démocratique du centre,recommends_yes,fr,Union démocratique du centre,swissvotes:party_recommendation,p-svp,matched
+A-665,Q120883,Céline Amaudruz,rapporteur,de,Céline Amaudruz,curia:Rapporteur,PersonNumber:4090,matched
+A-665,Q120883,Céline Amaudruz,rapporteur,fr,Céline Amaudruz,curia:Rapporteur,PersonNumber:4090,matched
+A-665,Q1370309,Peter Hegglin,rapporteur,de,Peter Hegglin,curia:Rapporteur,PersonNumber:4153,matched
+A-665,Q1370309,Peter Hegglin,rapporteur,fr,Peter Hegglin,curia:Rapporteur,PersonNumber:4153,matched
+A-665,Q30017107,Andri Silberschmidt,rapporteur,de,Andri Silberschmidt,curia:Rapporteur,PersonNumber:4290,matched
+A-665,Q30017107,Andri Silberschmidt,rapporteur,fr,Andri Silberschmidt,curia:Rapporteur,PersonNumber:4290,matched
+A-665,Q667836,Eidgenössisch-Demokratische Union,recommends_no,de,Eidgenössisch-Demokratische Union,swissvotes:party_recommendation,p-edu,matched
+A-665,Q667836,Union démocratique fédérale,recommends_no,fr,Union démocratique fédérale,swissvotes:party_recommendation,p-edu,matched
+A-665,Q667718,Evangelische Volkspartei,recommends_no,de,Evangelische Volkspartei,swissvotes:party_recommendation,p-evp,matched
+A-665,Q667718,Parti évangélique suisse,recommends_no,fr,Parti évangélique suisse,swissvotes:party_recommendation,p-evp,matched
+A-665,Q202638,FDP.Die Liberalen,recommends_no,de,FDP.Die Liberalen,swissvotes:party_recommendation,p-fdp,matched
+A-665,Q202638,Parti libéral-radical,recommends_no,fr,Parti libéral-radical,swissvotes:party_recommendation,p-fdp,matched
+A-665,Q545900,Grünliberale Partei,recommends_no,de,Grünliberale Partei,swissvotes:party_recommendation,p-glp,matched
+A-665,Q545900,Vert'libéraux,recommends_no,fr,Vert'libéraux,swissvotes:party_recommendation,p-glp,matched
+A-665,Q659739,Grüne Partei der Schweiz,recommends_yes,de,Grüne Partei der Schweiz,swissvotes:party_recommendation,p-gps,matched
+A-665,Q659739,Les Verts Suisse,recommends_yes,fr,Les Verts Suisse,swissvotes:party_recommendation,p-gps,matched
+A-665,Q100934025,Die Mitte,recommends_no,de,Die Mitte,swissvotes:party_recommendation,p-mitte,matched
+A-665,Q100934025,Le Centre,recommends_no,fr,Le Centre,swissvotes:party_recommendation,p-mitte,matched
+A-665,Q303745,Sozialdemokratische Partei der Schweiz,recommends_yes,de,Sozialdemokratische Partei der Schweiz,swissvotes:party_recommendation,p-sps,matched
+A-665,Q303745,Parti socialiste suisse,recommends_yes,fr,Parti socialiste suisse,swissvotes:party_recommendation,p-sps,matched
+A-665,Q385258,Schweizerische Volkspartei,recommends_no,de,Schweizerische Volkspartei,swissvotes:party_recommendation,p-svp,matched
+A-665,Q385258,Union démocratique du centre,recommends_no,fr,Union démocratique du centre,swissvotes:party_recommendation,p-svp,matched
+B-Q114349672,Q115881,Karin Keller-Sutter,federal_councillor,de,Karin Keller-Sutter,wikidata:P39,Q11811941,matched
+B-Q114349672,Q115881,Karin Keller-Sutter,federal_councillor,fr,Karin Keller-Sutter,wikidata:P39,Q11811941,matched
+B-Q114349672,Q117254,Ignazio Cassis,federal_councillor,de,Ignazio Cassis,wikidata:P39,Q11811941,matched
+B-Q114349672,Q117254,Ignazio Cassis,federal_councillor,fr,Ignazio Cassis,wikidata:P39,Q11811941,matched
+B-Q114349672,Q119388,Albert Rösti,federal_councillor,de,Albert Rösti,wikidata:P39,Q11811941,matched
+B-Q114349672,Q119388,Albert Rösti,federal_councillor,fr,Albert Rösti,wikidata:P39,Q11811941,matched
+B-Q114349672,Q120917,Viola Amherd,federal_councillor,de,Viola Amherd,wikidata:P39,Q11811941,matched
+B-Q114349672,Q120917,Viola Amherd,federal_councillor,fr,Viola Amherd,wikidata:P39,Q11811941,matched
+B-Q114349672,Q121160,Guy Parmelin,federal_councillor,de,Guy Parmelin,wikidata:P39,Q11811941,matched
+B-Q114349672,Q121160,Guy Parmelin,federal_councillor,fr,Guy Parmelin,wikidata:P39,Q11811941,matched
+B-Q114349672,Q121285,Elisabeth Baume-Schneider,federal_councillor,de,Elisabeth Baume-Schneider,wikidata:P39,Q11811941,matched
+B-Q114349672,Q121285,Elisabeth Baume-Schneider,federal_councillor,fr,Elisabeth Baume-Schneider,wikidata:P39,Q11811941,matched
+B-Q114349672,Q122991,Simonetta Sommaruga,federal_councillor,de,Simonetta Sommaruga,wikidata:P39,Q11811941,matched
+B-Q114349672,Q122991,Simonetta Sommaruga,federal_councillor,fr,Simonetta Sommaruga,wikidata:P39,Q11811941,matched
+B-Q114349672,Q123939,Alain Berset,federal_councillor,de,Alain Berset,wikidata:P39,Q11811941,matched
+B-Q114349672,Q123939,Alain Berset,federal_councillor,fr,Alain Berset,wikidata:P39,Q11811941,matched
+B-Q114349672,Q123979,Ueli Maurer,federal_councillor,de,Ueli Maurer,wikidata:P39,Q11811941,matched
+B-Q114349672,Q123979,Ueli Maurer,federal_councillor,fr,Ueli Maurer,wikidata:P39,Q11811941,matched
+B-Q122238691,Q115881,Karin Keller-Sutter,federal_councillor,de,Karin Keller-Sutter,wikidata:P39,Q11811941,matched
+B-Q122238691,Q115881,Karin Keller-Sutter,federal_councillor,fr,Karin Keller-Sutter,wikidata:P39,Q11811941,matched
+B-Q122238691,Q117254,Ignazio Cassis,federal_councillor,de,Ignazio Cassis,wikidata:P39,Q11811941,matched
+B-Q122238691,Q117254,Ignazio Cassis,federal_councillor,fr,Ignazio Cassis,wikidata:P39,Q11811941,matched
+B-Q122238691,Q119388,Albert Rösti,federal_councillor,de,Albert Rösti,wikidata:P39,Q11811941,matched
+B-Q122238691,Q119388,Albert Rösti,federal_councillor,fr,Albert Rösti,wikidata:P39,Q11811941,matched
+B-Q122238691,Q120917,Viola Amherd,federal_councillor,de,Viola Amherd,wikidata:P39,Q11811941,matched
+B-Q122238691,Q120917,Viola Amherd,federal_councillor,fr,Viola Amherd,wikidata:P39,Q11811941,matched
+B-Q122238691,Q121160,Guy Parmelin,federal_councillor,de,Guy Parmelin,wikidata:P39,Q11811941,matched
+B-Q122238691,Q121160,Guy Parmelin,federal_councillor,fr,Guy Parmelin,wikidata:P39,Q11811941,matched
+B-Q122238691,Q121285,Elisabeth Baume-Schneider,federal_councillor,de,Elisabeth Baume-Schneider,wikidata:P39,Q11811941,matched
+B-Q122238691,Q121285,Elisabeth Baume-Schneider,federal_councillor,fr,Elisabeth Baume-Schneider,wikidata:P39,Q11811941,matched
+B-Q122238691,Q123939,Alain Berset,federal_councillor,de,Alain Berset,wikidata:P39,Q11811941,matched
+B-Q122238691,Q123939,Alain Berset,federal_councillor,fr,Alain Berset,wikidata:P39,Q11811941,matched
+B-Q122238691,Q813067,Beat Jans,federal_councillor,de,Beat Jans,wikidata:P39,Q11811941,matched
+B-Q122238691,Q813067,Beat Jans,federal_councillor,fr,Beat Jans,wikidata:P39,Q11811941,matched
+B-Q57624299,Q115442,Doris Leuthard,federal_councillor,de,Doris Leuthard,wikidata:P39,Q11811941,matched
+B-Q57624299,Q115442,Doris Leuthard,federal_councillor,fr,Doris Leuthard,wikidata:P39,Q11811941,matched
+B-Q57624299,Q115881,Karin Keller-Sutter,federal_councillor,de,Karin Keller-Sutter,wikidata:P39,Q11811941,matched
+B-Q57624299,Q115881,Karin Keller-Sutter,federal_councillor,fr,Karin Keller-Sutter,wikidata:P39,Q11811941,matched
+B-Q57624299,Q117254,Ignazio Cassis,federal_councillor,de,Ignazio Cassis,wikidata:P39,Q11811941,matched
+B-Q57624299,Q117254,Ignazio Cassis,federal_councillor,fr,Ignazio Cassis,wikidata:P39,Q11811941,matched
+B-Q57624299,Q120917,Viola Amherd,federal_councillor,de,Viola Amherd,wikidata:P39,Q11811941,matched
+B-Q57624299,Q120917,Viola Amherd,federal_councillor,fr,Viola Amherd,wikidata:P39,Q11811941,matched
+B-Q57624299,Q121160,Guy Parmelin,federal_councillor,de,Guy Parmelin,wikidata:P39,Q11811941,matched
+B-Q57624299,Q121160,Guy Parmelin,federal_councillor,fr,Guy Parmelin,wikidata:P39,Q11811941,matched
+B-Q57624299,Q122991,Simonetta Sommaruga,federal_councillor,de,Simonetta Sommaruga,wikidata:P39,Q11811941,matched
+B-Q57624299,Q122991,Simonetta Sommaruga,federal_councillor,fr,Simonetta Sommaruga,wikidata:P39,Q11811941,matched
+B-Q57624299,Q123939,Alain Berset,federal_councillor,de,Alain Berset,wikidata:P39,Q11811941,matched
+B-Q57624299,Q123939,Alain Berset,federal_councillor,fr,Alain Berset,wikidata:P39,Q11811941,matched
+B-Q57624299,Q123979,Ueli Maurer,federal_councillor,de,Ueli Maurer,wikidata:P39,Q11811941,matched
+B-Q57624299,Q123979,Ueli Maurer,federal_councillor,fr,Ueli Maurer,wikidata:P39,Q11811941,matched
+B-Q57624299,Q380063,Johann Schneider-Ammann,federal_councillor,de,Johann Schneider-Ammann,wikidata:P39,Q11811941,matched
+B-Q57624299,Q380063,Johann Schneider-Ammann,federal_councillor,fr,Johann Schneider-Ammann,wikidata:P39,Q11811941,matched
+B-Q59550563,Q115881,Karin Keller-Sutter,federal_councillor,de,Karin Keller-Sutter,wikidata:P39,Q11811941,matched
+B-Q59550563,Q115881,Karin Keller-Sutter,federal_councillor,fr,Karin Keller-Sutter,wikidata:P39,Q11811941,matched
+B-Q59550563,Q117254,Ignazio Cassis,federal_councillor,de,Ignazio Cassis,wikidata:P39,Q11811941,matched
+B-Q59550563,Q117254,Ignazio Cassis,federal_councillor,fr,Ignazio Cassis,wikidata:P39,Q11811941,matched
+B-Q59550563,Q120917,Viola Amherd,federal_councillor,de,Viola Amherd,wikidata:P39,Q11811941,matched
+B-Q59550563,Q120917,Viola Amherd,federal_councillor,fr,Viola Amherd,wikidata:P39,Q11811941,matched
+B-Q59550563,Q121160,Guy Parmelin,federal_councillor,de,Guy Parmelin,wikidata:P39,Q11811941,matched
+B-Q59550563,Q121160,Guy Parmelin,federal_councillor,fr,Guy Parmelin,wikidata:P39,Q11811941,matched
+B-Q59550563,Q122991,Simonetta Sommaruga,federal_councillor,de,Simonetta Sommaruga,wikidata:P39,Q11811941,matched
+B-Q59550563,Q122991,Simonetta Sommaruga,federal_councillor,fr,Simonetta Sommaruga,wikidata:P39,Q11811941,matched
+B-Q59550563,Q123939,Alain Berset,federal_councillor,de,Alain Berset,wikidata:P39,Q11811941,matched
+B-Q59550563,Q123939,Alain Berset,federal_councillor,fr,Alain Berset,wikidata:P39,Q11811941,matched
+B-Q59550563,Q123979,Ueli Maurer,federal_councillor,de,Ueli Maurer,wikidata:P39,Q11811941,matched
+B-Q59550563,Q123979,Ueli Maurer,federal_councillor,fr,Ueli Maurer,wikidata:P39,Q11811941,matched
+C-Q117220069,Q193199,UBS,participant,de,UBS,wikidata:event_actor,participant,matched
+C-Q117220069,Q193199,UBS,participant,fr,UBS,wikidata:event_actor,participant,matched
+C-Q117220069,Q372657,Credit Suisse,participant,de,Credit Suisse,wikidata:event_actor,participant,matched
+C-Q117220069,Q372657,Credit Suisse,participant,fr,Credit Suisse,wikidata:event_actor,participant,matched
+D-651,Q64617510,Martin Haab,rapporteur,de,Martin Haab,curia:Rapporteur,PersonNumber:4236,matched
+D-651,Q64617510,Martin Haab,rapporteur,fr,Martin Haab,curia:Rapporteur,PersonNumber:4236,matched
+D-651,Q71782088,Simone de Montmollin,rapporteur,de,Simone de Montmollin,curia:Rapporteur,PersonNumber:4256,matched
+D-651,Q71782088,Simone de Montmollin,rapporteur,fr,Simone de Montmollin,curia:Rapporteur,PersonNumber:4256,matched
+D-651,Q116475,Hannes Germann,rapporteur,de,Hannes Germann,curia:Rapporteur,PersonNumber:825,matched
+D-651,Q116475,Hannes Germann,rapporteur,fr,Hannes Germann,curia:Rapporteur,PersonNumber:825,matched
+D-651,Q667836,Eidgenössisch-Demokratische Union,recommends_no,de,Eidgenössisch-Demokratische Union,swissvotes:party_recommendation,p-edu,matched
+D-651,Q667836,Union démocratique fédérale,recommends_no,fr,Union démocratique fédérale,swissvotes:party_recommendation,p-edu,matched
+D-651,Q667718,Evangelische Volkspartei,recommends_no,de,Evangelische Volkspartei,swissvotes:party_recommendation,p-evp,matched
+D-651,Q667718,Parti évangélique suisse,recommends_no,fr,Parti évangélique suisse,swissvotes:party_recommendation,p-evp,matched
+D-651,Q202638,FDP.Die Liberalen,recommends_no,de,FDP.Die Liberalen,swissvotes:party_recommendation,p-fdp,matched
+D-651,Q202638,Parti libéral-radical,recommends_no,fr,Parti libéral-radical,swissvotes:party_recommendation,p-fdp,matched
+D-651,Q545900,Grünliberale Partei,recommends_no,de,Grünliberale Partei,swissvotes:party_recommendation,p-glp,matched
+D-651,Q545900,Vert'libéraux,recommends_no,fr,Vert'libéraux,swissvotes:party_recommendation,p-glp,matched
+D-651,Q659739,Grüne Partei der Schweiz,recommends_no,de,Grüne Partei der Schweiz,swissvotes:party_recommendation,p-gps,matched
+D-651,Q659739,Les Verts Suisse,recommends_no,fr,Les Verts Suisse,swissvotes:party_recommendation,p-gps,matched
+D-651,Q100934025,Die Mitte,recommends_no,de,Die Mitte,swissvotes:party_recommendation,p-mitte,matched
+D-651,Q100934025,Le Centre,recommends_no,fr,Le Centre,swissvotes:party_recommendation,p-mitte,matched
+D-651,Q303745,Sozialdemokratische Partei der Schweiz,recommends_no,de,Sozialdemokratische Partei der Schweiz,swissvotes:party_recommendation,p-sps,matched
+D-651,Q303745,Parti socialiste suisse,recommends_no,fr,Parti socialiste suisse,swissvotes:party_recommendation,p-sps,matched
+D-651,Q385258,Schweizerische Volkspartei,recommends_no,de,Schweizerische Volkspartei,swissvotes:party_recommendation,p-svp,matched
+D-651,Q385258,Union démocratique du centre,recommends_no,fr,Union démocratique du centre,swissvotes:party_recommendation,p-svp,matched
+E-Q101110072,Q10853588,,candidate,de,,wikidata:event_actor,candidate,matched
+E-Q101110072,Q10853588,,candidate,fr,,wikidata:event_actor,candidate,matched
+E-Q101110072,Q116179225,Chase Oliver,candidate,de,Chase Oliver,wikidata:event_actor,candidate,matched
+E-Q101110072,Q116179225,Chase Oliver,candidate,fr,Chase Oliver,wikidata:event_actor,candidate,matched
+E-Q101110072,Q122171210,Peter Sonski,candidate,de,Peter Sonski,wikidata:event_actor,candidate,matched
+E-Q101110072,Q122171210,Peter Sonski,candidate,fr,Peter Sonski,wikidata:event_actor,candidate,matched
+E-Q101110072,Q122877541,Claudia de la Cruz,candidate,de,Claudia de la Cruz,wikidata:event_actor,candidate,matched
+E-Q101110072,Q122877541,Claudia de la Cruz,candidate,fr,Claudia de la Cruz,wikidata:event_actor,candidate,matched
+E-Q101110072,Q1352872,Robert Francis Kennedy junior,candidate,de,Robert Francis Kennedy junior,wikidata:event_actor,candidate,matched
+E-Q101110072,Q1352872,Robert F. Kennedy Jr.,candidate,fr,Robert F. Kennedy Jr.,wikidata:event_actor,candidate,matched
+E-Q101110072,Q2130627,Randall Terry,candidate,de,Randall Terry,wikidata:event_actor,candidate,matched
+E-Q101110072,Q2130627,Randall Terry,candidate,fr,Randall Terry,wikidata:event_actor,candidate,matched
+E-Q101110072,Q22686,Donald Trump,candidate,de,Donald Trump,wikidata:event_actor,candidate,matched
+E-Q101110072,Q22686,Donald Trump,candidate,fr,Donald Trump,wikidata:event_actor,candidate,matched
+E-Q101110072,Q235321,Jill Stein,candidate,de,Jill Stein,wikidata:event_actor,candidate,matched
+E-Q101110072,Q235321,Jill Stein,candidate,fr,Jill Stein,wikidata:event_actor,candidate,matched
+E-Q101110072,Q712469,Cornel West,candidate,de,Cornel West,wikidata:event_actor,candidate,matched
+E-Q101110072,Q712469,Cornel West,candidate,fr,Cornel West,wikidata:event_actor,candidate,matched
+E-Q101110072,Q7499234,Shiva Ayyadurai,candidate,de,Shiva Ayyadurai,wikidata:event_actor,candidate,matched
+E-Q101110072,Q7499234,Shiva Ayyadurai,candidate,fr,Shiva Ayyadurai,wikidata:event_actor,candidate,matched
+E-Q22923830,Q15492464,Howie Hawkins,candidate,de,Howie Hawkins,wikidata:event_actor,candidate,matched
+E-Q22923830,Q15492464,Howie Hawkins,candidate,fr,Howie Hawkins,wikidata:event_actor,candidate,matched
+E-Q22923830,Q22686,Donald Trump,candidate,de,Donald Trump,wikidata:event_actor,candidate,matched
+E-Q22923830,Q22686,Donald Trump,candidate,fr,Donald Trump,wikidata:event_actor,candidate,matched
+E-Q22923830,Q6204319,Jo Jorgensen,candidate,de,Jo Jorgensen,wikidata:event_actor,candidate,matched
+E-Q22923830,Q6204319,Jo Jorgensen,candidate,fr,Jo Jorgensen,wikidata:event_actor,candidate,matched
+E-Q22923830,Q6279,Joe Biden,candidate,de,Joe Biden,wikidata:event_actor,candidate,matched
+E-Q22923830,Q6279,Joe Biden,candidate,fr,Joe Biden,wikidata:event_actor,candidate,matched
+E-Q7888194,Q145,Vereinigtes Königreich,participant,de,Vereinigtes Königreich,wikidata:event_actor,participant,matched
+E-Q7888194,Q145,Royaume-Uni,participant,fr,Royaume-Uni,wikidata:event_actor,participant,matched
+E-Q7888194,Q35572,UEFA,participant,de,UEFA,wikidata:event_actor,participant,matched
+E-Q7888194,Q35572,Union des associations européennes de football,participant,fr,Union des associations européennes de football,wikidata:event_actor,participant,matched

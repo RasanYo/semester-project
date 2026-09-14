@@ -46,6 +46,10 @@ class Manifest:
         self.notes: dict[str, Any] = {}
 
     def record(self, *, name: str, url: str, path: Path, **extra: Any) -> None:
+        # One entry per artefact: several ballot objects can share a source
+        # file (both 2024-09-22 objects come from the same BFS document).
+        if any(e["url"] == url for e in self.entries):
+            return
         self.entries.append(
             {
                 "name": name,

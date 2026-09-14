@@ -15,6 +15,7 @@ removes that outlet from the pull, discovered only after the compile.
 from __future__ import annotations
 
 import os
+import time
 from datetime import date
 from pathlib import Path
 from typing import Any
@@ -110,26 +111,46 @@ def _credentials() -> dict[str, str]:
     return {"X-API-Key": key, "X-API-Secret": secret}
 
 
-def validate(yaml_text: str, *, name: str) -> tuple[bool, str]:
+# The validation endpoint is not rate-limited by contract, but it returns
+# HTTP 500 (and sometimes 504) under rapid sequential submissions and recovers
+# when paced. Measured: a back-to-back batch of 20 reported 7 false failures,
+# 5 s apart still reported 4, and every one of those validated on its own.
+# Batch callers should sleep this long between queries.
+PACE_SECONDS = 12
+
+
+def validate(yaml_text: str, *, name: str, retries: int = 3) -> tuple[bool, str]:
     """Submit with `test=1`: validates without compiling, and costs nothing.
 
-    Returns (ok, message). A 406 carries a usable error list; a 500 almost
-    always means a required `result.*` key is missing rather than an outage.
+    Returns (ok, message). A 406 carries a usable error list and is a real
+    rejection, so it is returned immediately.
+
+    A 500 is ambiguous and must be retried before it is believed. It does mean
+    "a required result.* key is missing" when the query is genuinely malformed
+    -- but the server also returns it transiently under rapid sequential
+    submissions, and a batch of valid queries will otherwise report a third of
+    itself as broken.
     """
-    resp = requests.post(
-        f"{API_BASE}/query",
-        headers=_credentials(),
-        data={"query": yaml_text, "name": name, "test": "1"},
-        timeout=120,
-    )
-    if resp.status_code == 200:
-        return True, resp.json().get("message", "valid")
-    if resp.status_code == 500:
-        return False, (
-            "HTTP 500 -- a required result.* key is missing "
-            "(content? maxResults?)"
+    last = ""
+    for attempt in range(retries):
+        resp = requests.post(
+            f"{API_BASE}/query",
+            headers=_credentials(),
+            data={"query": yaml_text, "name": name, "test": "1"},
+            timeout=120,
         )
-    return False, f"HTTP {resp.status_code}: {resp.text[:400]}"
+        if resp.status_code == 200:
+            return True, resp.json().get("message", "valid")
+        if resp.status_code == 406:
+            return False, f"HTTP 406 (rejected): {resp.text[:400]}"
+        last = f"HTTP {resp.status_code}"
+        # The server chokes on rapid sequential submissions and recovers
+        # given room, so back off in seconds, not milliseconds.
+        time.sleep(5 * (attempt + 1))
+    return False, (
+        f"{last} -- persisted over {retries} attempts, so probably a missing "
+        "required result.* key (content? maxResults?) rather than a transient"
+    )
 
 
 def check_sources(
@@ -144,11 +165,10 @@ def check_sources(
     """
     import json
 
-    known = {
-        entry["code"].strip()
-        for entry in json.loads(source_list_path.read_text(encoding="utf-8"))
-        if entry.get("code")
-    }
+    # The file is {"rows": [...], "totals": {...}}, not a bare list.
+    payload = json.loads(source_list_path.read_text(encoding="utf-8"))
+    rows = payload["rows"] if isinstance(payload, dict) else payload
+    known = {r["code"].strip() for r in rows if r.get("code")}
     present = [c for c in codes if c in known]
     missing = [c for c in codes if c not in known]
     return present, missing

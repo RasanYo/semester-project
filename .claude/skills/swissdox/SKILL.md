@@ -65,6 +65,19 @@ tables. An omitted filter means no filtering, not an empty result.
 - `article_link` is a real column.
 - `estimateResults` in `/status` is garbage — one query estimated 1 and
   returned 1953. Never size a pull from it.
+- `result.columns` **must** contain `content`, and `result.maxResults` is
+  mandatory. Omit either and `/query` returns a bare HTTP 500 with no error
+  list — not a 406. Consequence: there is no cheap metadata-only counting
+  query, so every pull carries full article text.
+- An **unknown medium code passes validation silently** (HTTP 200, "valid").
+  A typo just drops that outlet from the pull and you find out after the
+  compile. Check every code against `swissdox_sources.json` locally first —
+  and note that file is `{"rows": [...], "totals": {...}}`, not a bare list.
+- **Pace a batch of `test=1` submissions, ~12 s apart.** The endpoint 500s
+  (sometimes 504s) under rapid sequential validation. Measured: 20 back-to-back
+  queries reported 7 false failures; 5 s apart still reported 4; every one of
+  those validated when submitted alone. A 500 is only real if it survives
+  retries *and* pacing.
 
 ## Reading the output
 

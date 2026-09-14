@@ -162,40 +162,208 @@ def party_actors(
     return rows
 
 
-def participant_actors(qids: list[str]) -> dict[str, list[dict[str, Any]]]:
-    """Named participants (P710) of Wikidata events, for blocks C and E.
+# Wikidata properties that name an actor of an event, and the role each one
+# means. P710 covers summits and takeovers; elections carry their cast under
+# P726 / P991 / P1346 instead, and an election with no P710 would otherwise
+# contribute no actors at all.
+EVENT_ACTOR_PROPERTIES = {
+    "P710": "participant",
+    "P991": "successful_candidate",
+    "P1346": "winner",
+    "P726": "candidate",
+}
 
-    These arrive already reconciled -- the event item points at entity items,
-    so there is no surface string to match and no chance of a homonym. That is
+# A US presidential election lists 83 candidates. The visible ones in Swiss
+# coverage are the handful with international standing, so candidates are
+# ranked by sitelinks and capped -- the same notability rule already used to
+# rank the events themselves, rather than a second, different criterion.
+MAX_CANDIDATES = 10
+
+
+def event_actors(qids: list[str]) -> dict[str, list[dict[str, Any]]]:
+    """Named actors of Wikidata events, for blocks B, C and E.
+
+    These arrive already reconciled: the event item points at entity items, so
+    there is no surface string to match and no homonym can fire. That is
     exactly why blocks C and E are the cheap part and block A is not.
+
+    An event with none of these properties yields no actors, and that is
+    reported rather than patched -- the Ju-52 crash, the women's strike and the
+    2023 Turkey-Syria earthquakes genuinely name no actor on Wikidata.
     """
     if not qids:
         return {}
     values = " ".join(f"wd:{q}" for q in sorted(set(qids)))
+    props = " ".join(f"wdt:{p}" for p in EVENT_ACTOR_PROPERTIES)
     rows = wd.sparql(
-        "SELECT ?item ?part ?l_de ?l_fr ?l_en WHERE {\n"
+        "SELECT ?item ?prop ?actor ?sl ?l_de ?l_fr ?l_en WHERE {\n"
         f"  VALUES ?item {{ {values} }}\n"
-        "  ?item wdt:P710 ?part .\n"
-        '  OPTIONAL { ?part rdfs:label ?l_de FILTER(lang(?l_de)="de") }\n'
-        '  OPTIONAL { ?part rdfs:label ?l_fr FILTER(lang(?l_fr)="fr") }\n'
-        '  OPTIONAL { ?part rdfs:label ?l_en FILTER(lang(?l_en)="en") }\n'
+        f"  VALUES ?p {{ {props} }}\n"
+        "  ?item ?p ?actor .\n"
+        "  BIND(REPLACE(STR(?p), '.*/', '') AS ?prop)\n"
+        "  OPTIONAL { ?actor wikibase:sitelinks ?sl }\n"
+        '  OPTIONAL { ?actor rdfs:label ?l_de FILTER(lang(?l_de)="de") }\n'
+        '  OPTIONAL { ?actor rdfs:label ?l_fr FILTER(lang(?l_fr)="fr") }\n'
+        '  OPTIONAL { ?actor rdfs:label ?l_en FILTER(lang(?l_en)="en") }\n'
         "}"
     )
-    out: dict[str, list[dict[str, Any]]] = defaultdict(list)
+
+    grouped: dict[str, dict[str, dict[str, Any]]] = defaultdict(dict)
     for r in rows:
-        event_q, part_q = wd.qid(r["item"]), wd.qid(r["part"])
+        event_q, actor_q = wd.qid(r["item"]), wd.qid(r["actor"])
+        role = EVENT_ACTOR_PROPERTIES.get(r.get("prop", ""), "participant")
+        entry = grouped[event_q].setdefault(
+            actor_q,
+            {
+                "qid": actor_q,
+                "roles": set(),
+                "sitelinks": int(r["sl"]) if r.get("sl") else 0,
+                "labels": {},
+            },
+        )
+        entry["roles"].add(role)
         for lang in ("de", "fr"):
-            label = r.get(f"l_{lang}") or r.get("l_en")
-            out[event_q].append(
+            if r.get(f"l_{lang}"):
+                entry["labels"][lang] = r[f"l_{lang}"]
+        entry["labels"].setdefault("en", r.get("l_en", ""))
+
+    out: dict[str, list[dict[str, Any]]] = {}
+    for event_q, actors in grouped.items():
+        # Everything named by a property other than P726 is kept; bare
+        # candidates are ranked by sitelinks and capped.
+        named = [a for a in actors.values() if a["roles"] - {"candidate"}]
+        cands = [a for a in actors.values() if a["roles"] == {"candidate"}]
+        cands.sort(key=lambda a: (-a["sitelinks"], a["qid"]))
+        chosen = named + cands[:MAX_CANDIDATES]
+
+        rows_out: list[dict[str, Any]] = []
+        for a in chosen:
+            role = sorted(a["roles"])[0]
+            for lang in ("de", "fr"):
+                label = a["labels"].get(lang) or a["labels"].get("en")
+                rows_out.append(
+                    {
+                        "qid": a["qid"],
+                        "label": label,
+                        "role": role,
+                        "lang": lang,
+                        "surface_form": label,
+                        "source": "wikidata:event_actor",
+                        "source_key": role,
+                        "match_status": "matched",
+                    }
+                )
+        out[event_q] = rows_out
+    return out
+
+
+# ------------------------------------------------ people, via the id bridge ----
+
+
+def qids_for_person_numbers(person_numbers: list[int]) -> dict[int, dict[str, Any]]:
+    """Map parlament.ch PersonNumbers to QIDs through Wikidata property P1307.
+
+    This is the one place in the pipeline where reconciliation is free of doubt:
+    P1307 is an external identifier whose literal value IS the PersonNumber, so
+    no string is matched and no homonym can slip through. It matters -- 86 of
+    423 in-window parliamentarian names have more than one exact-label Wikidata
+    item, including two Swiss National Councillors called Alfred Heer who sat
+    for different parties and whom no citizenship or occupation filter
+    separates.
+    """
+    if not person_numbers:
+        return {}
+    values = " ".join(f'"{n}"' for n in sorted(set(person_numbers)))
+    rows = wd.sparql(
+        "SELECT ?item ?pn ?l_de ?l_fr ?party ?partyLabelDe WHERE {\n"
+        f"  VALUES ?pn {{ {values} }}\n"
+        "  ?item wdt:P1307 ?pn .\n"
+        "  OPTIONAL { ?item wdt:P102 ?party .\n"
+        '            OPTIONAL { ?party rdfs:label ?partyLabelDe\n'
+        '                       FILTER(lang(?partyLabelDe)="de") } }\n'
+        '  OPTIONAL { ?item rdfs:label ?l_de FILTER(lang(?l_de)="de") }\n'
+        '  OPTIONAL { ?item rdfs:label ?l_fr FILTER(lang(?l_fr)="fr") }\n'
+        "}"
+    )
+    out: dict[int, dict[str, Any]] = {}
+    for r in rows:
+        pn = int(r["pn"])
+        entry = out.setdefault(
+            pn, {"qid": wd.qid(r["item"]), "labels": {}, "parties": set()}
+        )
+        for lang in ("de", "fr"):
+            if r.get(f"l_{lang}"):
+                entry["labels"][lang] = r[f"l_{lang}"]
+        if r.get("party"):
+            entry["parties"].add(wd.qid(r["party"]))
+    return out
+
+
+def person_actors(
+    curia_actors: list[dict[str, Any]], resolved: dict[int, dict[str, Any]]
+) -> list[dict[str, Any]]:
+    """Turn Curia Vista actor records into entity rows, one per language."""
+    rows: list[dict[str, Any]] = []
+    for actor in curia_actors:
+        pn = actor["person_number"]
+        hit = resolved.get(pn)
+        for lang in ("de", "fr"):
+            label = hit["labels"].get(lang) if hit else None
+            rows.append(
                 {
-                    "qid": part_q,
+                    "qid": hit["qid"] if hit else None,
                     "label": label,
-                    "role": "participant",
+                    "role": actor["role"],
+                    "lang": lang,
+                    "surface_form": label or actor.get("surname"),
+                    "source": actor["source"],
+                    "source_key": f"PersonNumber:{pn}",
+                    "match_status": "matched" if hit else "nil_no_p1307",
+                }
+            )
+    return rows
+
+
+def federal_council_actors(when: date, window_days: int = 45) -> list[dict[str, Any]]:
+    """The Federal Council around a Federal Council election.
+
+    The visible cast of such an election is the sitting government plus whoever
+    joins it, so the actor set is every holder of the office whose mandate
+    overlaps a window around the election date.
+
+    The date matters and is easy to get wrong: a newly elected councillor's P39
+    start date is the term start in January, not the December election that was
+    the media event. The event item carries the real date (P585); the person
+    does not.
+    """
+    lo = (when - __import__("datetime").timedelta(days=window_days)).isoformat()
+    hi = (when + __import__("datetime").timedelta(days=window_days)).isoformat()
+    rows = wd.sparql(
+        "SELECT DISTINCT ?item ?l_de ?l_fr ?start ?end WHERE {\n"
+        "  ?item p:P39 ?st .\n"
+        "  ?st ps:P39 wd:Q11811941 .\n"
+        "  OPTIONAL { ?st pq:P580 ?start }\n"
+        "  OPTIONAL { ?st pq:P582 ?end }\n"
+        f'  FILTER(BOUND(?start) && ?start <= "{hi}T00:00:00Z"^^xsd:dateTime)\n'
+        f'  FILTER(!BOUND(?end) || ?end >= "{lo}T00:00:00Z"^^xsd:dateTime)\n'
+        '  OPTIONAL { ?item rdfs:label ?l_de FILTER(lang(?l_de)="de") }\n'
+        '  OPTIONAL { ?item rdfs:label ?l_fr FILTER(lang(?l_fr)="fr") }\n'
+        "}"
+    )
+    out: list[dict[str, Any]] = []
+    for r in rows:
+        for lang in ("de", "fr"):
+            label = r.get(f"l_{lang}")
+            out.append(
+                {
+                    "qid": wd.qid(r["item"]),
+                    "label": label,
+                    "role": "federal_councillor",
                     "lang": lang,
                     "surface_form": label,
-                    "source": "wikidata:P710",
-                    "source_key": "P710",
+                    "source": "wikidata:P39",
+                    "source_key": "Q11811941",
                     "match_status": "matched",
                 }
             )
-    return dict(out)
+    return out
