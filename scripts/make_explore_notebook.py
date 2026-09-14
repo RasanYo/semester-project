@@ -428,7 +428,13 @@ Do not read this heatmap as a finding. Read it as the question.
 """)
 
 nb["cells"] = C
-nb.metadata["kernelspec"] = {"display_name": "Python 3", "language": "python", "name": "python3"}
+# Name the kernel after the project venv, which is what Jupyter rewrites it
+# to on first open -- otherwise every rebuild shows a one-line diff.
+nb.metadata["kernelspec"] = {
+    "display_name": ".venv",
+    "language": "python",
+    "name": "python3",
+}
 out = "/home/ryounis/Documents/Zurich/ETHZ/semester-project/notebooks/01_explore_the_data.ipynb"
 nbf.write(nb, out)
 print("wrote", out, len(C), "cells")
