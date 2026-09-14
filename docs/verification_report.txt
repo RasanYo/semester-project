@@ -115,7 +115,8 @@ wikidata:event_actor               36    0
 ==============================================================================
 7. SWISSDOX QUERIES -- validated, nothing pulled
 ==============================================================================
-   20/20 queries validate against the live API (test=1)
+   FAIL A-631: HTTP 406 (rejected): {"result": "failed", "message": "A query named 'mediapos-A-631' already exists. Use a unique query 
+   19/20 queries validate against the live API (test=1)
    No query was submitted for compilation: no article was downloaded.
    Volume cannot be known before pulling -- estimateResults is
    confirmed useless (1 against an actual 1,953), and `content` is a
@@ -123,7 +124,29 @@ wikidata:event_actor               36    0
    needs one calibration pull, then linear extrapolation.
 
 ==============================================================================
-8. PROVENANCE
+8. THE CORPUS ON DISK
+==============================================================================
+   windows pulled   19 (20 events share 19 windows: two ballot objects fell on the same day)
+   events covered   20/20
+   articles         1,650,143
+   compressed       1.93 GB, gitignored
+   language de       1,125,990   68.2%
+   language fr         524,153   31.8%
+   outlets present  34/34 requested
+
+   This is an UNFILTERED pull: everything the 34 outlets
+   published in each window, not only articles about the event.
+   That is deliberate -- visibility is a share of attention, and
+   a share needs its denominator. On the calibration window only
+   1.7% of articles mentioned the ballot object itself.
+
+   Coverage caveat measured, not assumed: TPSO (letemps.ch) and
+   SGTO (tagblatt.ch) declare a period of '2010 -- today' in the
+   source list, yet returned zero articles in windows before
+   August 2020. A declared period is an upper bound.
+
+==============================================================================
+9. PROVENANCE
 ==============================================================================
    sources recorded: 12
      swissvotes_dataset          2,720,656 B  5c32d0d6e61e9ce9...
@@ -152,7 +175,7 @@ wikidata:event_actor               36    0
      anr 676 <- swissvotes:staatsebenen-de.xlsx
 
 ==============================================================================
-9. WHAT THIS DATASET CANNOT DO
+10. WHAT THIS DATASET CANNOT DO
 ==============================================================================
    * The French side of Swissdox is one publisher group (TX Group)
      plus Le Temps and rts.ch. Le Nouvelliste, La Liberte, ArcInfo,
