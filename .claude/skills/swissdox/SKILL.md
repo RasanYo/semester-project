@@ -81,6 +81,11 @@ tables. An omitted filter means no filtering, not an empty result.
   queries reported 7 false failures; 5 s apart still reported 4; every one of
   those validated when submitted alone. A 500 is only real if it survives
   retries *and* pacing.
+- **`period` in the source list overstates coverage.** `TPSO` (letemps.ch) and
+  `SGTO` (tagblatt.ch) both declare `2010 -- today`, yet returned zero articles
+  across six pulled windows before August 2020. A declared period is an upper
+  bound on what a code yields in a given year — measure per window, never plan
+  from it.
 
 ## Reading the output
 
@@ -109,3 +114,21 @@ windows lean heavily online and French-first. Source and doctype mix is part of
 the language/region confounder, not separate from it.
 
 Manual: https://swissdox.linguistik.uzh.ch/manual/api.html
+
+## Measured on real pulls (2026-09-14)
+
+One 44-day window, 34 sources (23 de + 11 fr), **no content filter**: 87,403
+articles, 97 MB compressed (**1,115 B/article**), 360 M characters of body text,
+compile **69 s**, no queue wait. `estimateResults` said 574. Still garbage.
+
+Scaled to 19 distinct windows: **1,650,143 articles, 1.93 GB compressed**,
+68.2 % de / 31.8 % fr, all 34 codes present overall, ~70 s compile each.
+
+The language split is worth noting: 68/32 against a corpus-wide 83/17, purely
+because the source list was balanced on purpose. You inherit the corpus skew
+only if you let the query default to it.
+
+Density, on the calibration window: **1.7 %** of articles mentioned the ballot
+object, **12.6 %** mentioned at least one reference party. Pull unfiltered when
+you need a denominator — visibility is a share of attention, and a share
+without its denominator is a count.

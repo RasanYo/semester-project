@@ -186,7 +186,41 @@ def main() -> int:
     print("   mandatory column, so there is no cheap metadata-only count. Sizing")
     print("   needs one calibration pull, then linear extrapolation.")
 
-    rule("8. PROVENANCE")
+    rule("8. THE CORPUS ON DISK")
+    receipts_path = cfg.DATA_OUT / "pull_receipts.json"
+    if not receipts_path.exists():
+        print("   nothing pulled yet")
+    else:
+        receipts = json.loads(receipts_path.read_text())
+        covered = {e for r in receipts.values() for e in r["event_ids"]}
+        n_articles = sum(r["articles_read"] for r in receipts.values())
+        n_bytes = sum(r["compressed_bytes"] for r in receipts.values())
+        langs = Counter()
+        media = Counter()
+        for r in receipts.values():
+            langs.update(r["by_language"])
+            media.update(r["by_medium"])
+        print(f"   windows pulled   {len(receipts)} "
+              f"(20 events share 19 windows: two ballot objects fell on the "
+              f"same day)")
+        print(f"   events covered   {len(covered)}/{len(events)}")
+        print(f"   articles         {n_articles:,}")
+        print(f"   compressed       {n_bytes / 1e9:.2f} GB, gitignored")
+        total = sum(langs.values())
+        for lang, n in langs.most_common():
+            print(f"   language {lang}       {n:>9,}  {n / total:>6.1%}")
+        print(f"   outlets present  {len(media)}/34 requested")
+        print("\n   This is an UNFILTERED pull: everything the 34 outlets")
+        print("   published in each window, not only articles about the event.")
+        print("   That is deliberate -- visibility is a share of attention, and")
+        print("   a share needs its denominator. On the calibration window only")
+        print("   1.7% of articles mentioned the ballot object itself.")
+        print("\n   Coverage caveat measured, not assumed: TPSO (letemps.ch) and")
+        print("   SGTO (tagblatt.ch) declare a period of '2010 -- today' in the")
+        print("   source list, yet returned zero articles in windows before")
+        print("   August 2020. A declared period is an upper bound.")
+
+    rule("9. PROVENANCE")
     print(f"   sources recorded: {len(manifest['sources'])}")
     for s in manifest["sources"][:12]:
         print(f"     {s['name']:<26} {s['bytes']:>10,} B  {s['sha256'][:16]}...")
@@ -197,7 +231,7 @@ def main() -> int:
     for anr, src in sorted(repairs.items()):
         print(f"     anr {anr} <- {src}")
 
-    rule("9. WHAT THIS DATASET CANNOT DO")
+    rule("10. WHAT THIS DATASET CANNOT DO")
     print("   * The French side of Swissdox is one publisher group (TX Group)")
     print("     plus Le Temps and rts.ch. Le Nouvelliste, La Liberte, ArcInfo,")
     print("     Le Courrier and Le Quotidien Jurassien are absent from the")

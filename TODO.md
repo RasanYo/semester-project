@@ -20,6 +20,16 @@ ligne, on le fait.
       mesure, et sa projection média–média qui porte le résultat. L'arête entre
       deux médias dit co-positionnement, jamais influence : undirected, et la
       version résiduelle après VARX à côté de la brute.
+- [ ] Prototyper le ton ciblé par fenêtre de mention — Cardiff XLM-R sur ±1
+      phrase autour de chaque mention, une fenêtre, une langue, un outlet. Deux
+      acteurs dans la même phrase reçoivent le même score : limite admise, pas
+      un bug. Le verdict n'est pas le F1 mais le diagnostic DE/FR — si le ton
+      diffère systématiquement entre langues pour les mêmes acteurs, on mesure
+      la langue, pas le ton.
+- [ ] Si la fenêtre tient : fine-tuner XLM-R sur NewsMTSC pour le ton ciblé — le
+      modèle prend (texte, cible) et rend un score par acteur, ce que la fenêtre
+      ne sait pas faire. NewsMTSC est anglais seul : tout repose sur le transfert
+      cross-lingue vers DE/FR, hypothèse à tester, jamais acquise.
 
 ## Fait
 
