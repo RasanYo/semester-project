@@ -13,10 +13,6 @@ La barre : ce qui change ce que le système *est* ou *sait faire*. Une question,
 une synchro de config, une coquille, un correctif d'un seul fichier — pas de
 ligne, on le fait.
 
-- [.] Construire le répertoire d'événements d'amorçage — ~20 événements suisses
-      tirés de Swissvotes et Curia Vista par une règle mécanique, stratifiés sur
-      polarisation × Röstigraben, entités de référence validées à la main. Le banc
-      de test du liage d'entités, et la comparaison à agenda contrôlé entre médias.
 - [ ] Trouver et obtenir le corpus — quelles archives, quelle licence, quelle fenêtre
 - [ ] Récupérer les références de validation (Smartvote, votes nominatifs, MARPOR/CHES)
 - [ ] Poser le squelette du repo — arborescence `src/`, `scripts/`, `data/`
@@ -28,6 +24,14 @@ ligne, on le fait.
 ## Fait
 
 *On coupe à 3 mois. Plus ancien, ça vit dans le `DEVLOG.md`.*
+
+- [x] 2026-09-14 — Le répertoire d'événements d'amorçage
+      20 événements (8 votations, 4 élections du Conseil fédéral, 3 suisses hors
+      calendrier, 1 contrôle consensuel, 4 internationaux en diagnostic), choisis
+      par une règle mécanique sur polarisation × Röstigraben. 304 lignes
+      d'entités, 65 QID, aucune appariée par chaîne de caractères. Deux runs
+      donnent des CSV identiques au byte près. 20 requêtes Swissdox validées,
+      zéro article téléchargé.
 
 - [x] 2026-09-11 — L'environnement Python et le manifeste de dépendances
       Python 3.12 dans `.venv`, `pyproject.toml` + `uv.lock` versionnés, le
