@@ -111,10 +111,26 @@ aucune agence de presse. **Langue et propriétaire sont colinéaires par
 construction** — à écrire dans le rapport comme une limite du corpus, pas à
 découvrir dans six semaines comme un diagnostic.
 
+**Le corpus, tiré ensuite**
+Le volume ne pouvait pas se connaître avant de tirer : `estimateResults`
+annonçait 574 pour une fenêtre qui en a rendu 87 403. Donc un pull d'étalonnage
+d'abord, puis les autres. Total : **1 650 143 articles, 1,93 Go** sur 19
+fenêtres — 19 et non 20, parce que deux objets votés le même jour partagent une
+fenêtre, et les compter deux fois présenterait les mêmes articles comme deux
+observations indépendantes.
+
+Le tirage est **sans filtre de mots-clés**, volontairement. Sur la fenêtre
+d'étalonnage, 1,7 % des articles mentionnent l'objet de la votation. Les 98 %
+restants ne sont pas du déchet : ce sont le **dénominateur**. La visibilité est
+une part d'attention, et une part sans dénominateur n'est qu'un décompte.
+
 **Différé, volontairement**
-Aucun article téléchargé. Le volume ne peut pas se connaître avant le pull
-(`estimateResults` est faux, et `content` étant une colonne obligatoire il n'y a
-pas de requête de comptage bon marché). La suite : un seul pull d'étalonnage,
-lire `actualResults`, extrapoler. Deux requêtes réelles au total, pas vingt.
+La déduplication des quasi-doublons, et le liage d'entités sur texte réel. Le
+notebook `notebooks/01_explore_the_data.ipynb` montre pourquoi les deux sont
+indispensables : un scan regex naïf sur une fenêtre place les 16 titres
+alémaniques en tête, le premier romand 17ᵉ. Soit la presse alémanique parle
+vraiment plus des partis fédéraux, soit nos formes de surface allemandes
+matchent mieux que les françaises. On ne peut pas trancher depuis ce graphique —
+c'est précisément ce que le bloc E existe pour tester.
 
 **Commits :** `1c64fbb`, `73167f6`, `ca54c3e`, `ef5f4ac`

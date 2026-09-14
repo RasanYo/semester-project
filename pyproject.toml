@@ -17,6 +17,8 @@ dependencies = [
 dev = [
     "ruff>=0.6",
     "pytest>=8.0",
+    "jupyter>=1.1.1",
+    "matplotlib>=3.11.2",
 ]
 
 [build-system]
@@ -32,3 +34,8 @@ src = ["src", "scripts"]
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "UP", "B"]
+
+[tool.ruff.lint.per-file-ignores]
+# This file embeds notebook markdown -- its long lines are prose and table rows,
+# and wrapping them would break the rendered tables.
+"scripts/make_explore_notebook.py" = ["E501"]
