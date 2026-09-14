@@ -13,13 +13,26 @@ La barre : ce qui change ce que le système *est* ou *sait faire*. Une question,
 une synchro de config, une coquille, un correctif d'un seul fichier — pas de
 ligne, on le fait.
 
+- [.] Construire le répertoire d'événements d'amorçage — ~20 événements suisses
+      tirés de Swissvotes et Curia Vista par une règle mécanique, stratifiés sur
+      polarisation × Röstigraben, entités de référence validées à la main. Le banc
+      de test du liage d'entités, et la comparaison à agenda contrôlé entre médias.
 - [ ] Trouver et obtenir le corpus — quelles archives, quelle licence, quelle fenêtre
 - [ ] Récupérer les références de validation (Smartvote, votes nominatifs, MARPOR/CHES)
-- [ ] Poser le squelette du repo — arborescence, gestion des dépendances
+- [ ] Poser le squelette du repo — arborescence `src/`, `scripts/`, `data/`
+- [ ] Représenter les résultats en graphe — le biparti média–acteur qui porte la
+      mesure, et sa projection média–média qui porte le résultat. L'arête entre
+      deux médias dit co-positionnement, jamais influence : undirected, et la
+      version résiduelle après VARX à côté de la brute.
 
 ## Fait
 
 *On coupe à 3 mois. Plus ancien, ça vit dans le `DEVLOG.md`.*
+
+- [x] 2026-09-11 — L'environnement Python et le manifeste de dépendances
+      Python 3.12 dans `.venv`, `pyproject.toml` + `uv.lock` versionnés, le
+      paquet `mediapos` sous `src/` installé en editable. Reconstruit depuis
+      zéro avec `uv sync --frozen` pour vérifier que le lock suffit.
 
 - [x] 2026-09-11 — Le sujet est cadré
       positionnement politique des médias suisses par la *visibilité* des acteurs,

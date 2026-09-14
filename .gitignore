@@ -244,3 +244,9 @@ __marimo__/
 # Claude Code — surcharges locales
 .claude/settings.local.json
 .claude/scheduled_tasks.lock
+
+# --- mediapos ---
+# The corpus and every raw download are a cache; the manifest is the fact.
+data/raw/
+data/cache/
+data/corpus/
