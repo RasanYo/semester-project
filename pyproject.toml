@@ -1,0 +1,41 @@
+[project]
+name = "mediapos"
+version = "0.1.0"
+description = "Political positioning of Swiss news media from outlet-actor visibility"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "requests>=2.32",
+    "pyyaml>=6.0",
+    "python-dotenv>=1.0",
+    "openpyxl>=3.1.5",
+    "pandas>=3.0.5",
+    "pyarrow>=25.0.1",
+]
+
+[project.optional-dependencies]
+dev = [
+    "ruff>=0.6",
+    "pytest>=8.0",
+    "jupyter>=1.1.1",
+    "matplotlib>=3.11.2",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/mediapos"]
+
+[tool.ruff]
+line-length = 88
+src = ["src", "scripts"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+
+[tool.ruff.lint.per-file-ignores]
+# This file embeds notebook markdown -- its long lines are prose and table rows,
+# and wrapping them would break the rendered tables.
+"scripts/make_explore_notebook.py" = ["E501"]

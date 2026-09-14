@@ -15,11 +15,38 @@ ligne, on le fait.
 
 - [ ] Trouver et obtenir le corpus — quelles archives, quelle licence, quelle fenêtre
 - [ ] Récupérer les références de validation (Smartvote, votes nominatifs, MARPOR/CHES)
-- [ ] Poser le squelette du repo — arborescence, gestion des dépendances
+- [ ] Poser le squelette du repo — arborescence `src/`, `scripts/`, `data/`
+- [ ] Représenter les résultats en graphe — le biparti média–acteur qui porte la
+      mesure, et sa projection média–média qui porte le résultat. L'arête entre
+      deux médias dit co-positionnement, jamais influence : undirected, et la
+      version résiduelle après VARX à côté de la brute.
+- [ ] Prototyper le ton ciblé par fenêtre de mention — Cardiff XLM-R sur ±1
+      phrase autour de chaque mention, une fenêtre, une langue, un outlet. Deux
+      acteurs dans la même phrase reçoivent le même score : limite admise, pas
+      un bug. Le verdict n'est pas le F1 mais le diagnostic DE/FR — si le ton
+      diffère systématiquement entre langues pour les mêmes acteurs, on mesure
+      la langue, pas le ton.
+- [ ] Si la fenêtre tient : fine-tuner XLM-R sur NewsMTSC pour le ton ciblé — le
+      modèle prend (texte, cible) et rend un score par acteur, ce que la fenêtre
+      ne sait pas faire. NewsMTSC est anglais seul : tout repose sur le transfert
+      cross-lingue vers DE/FR, hypothèse à tester, jamais acquise.
 
 ## Fait
 
 *On coupe à 3 mois. Plus ancien, ça vit dans le `DEVLOG.md`.*
+
+- [x] 2026-09-14 — Le répertoire d'événements d'amorçage
+      20 événements (8 votations, 4 élections du Conseil fédéral, 3 suisses hors
+      calendrier, 1 contrôle consensuel, 4 internationaux en diagnostic), choisis
+      par une règle mécanique sur polarisation × Röstigraben. 304 lignes
+      d'entités, 65 QID, aucune appariée par chaîne de caractères. Deux runs
+      donnent des CSV identiques au byte près. 20 requêtes Swissdox validées,
+      zéro article téléchargé.
+
+- [x] 2026-09-11 — L'environnement Python et le manifeste de dépendances
+      Python 3.12 dans `.venv`, `pyproject.toml` + `uv.lock` versionnés, le
+      paquet `mediapos` sous `src/` installé en editable. Reconstruit depuis
+      zéro avec `uv sync --frozen` pour vérifier que le lock suffit.
 
 - [x] 2026-09-11 — Le sujet est cadré
       positionnement politique des médias suisses par la *visibilité* des acteurs,
