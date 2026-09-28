@@ -133,4 +133,4 @@ vraiment plus des partis fédéraux, soit nos formes de surface allemandes
 matchent mieux que les françaises. On ne peut pas trancher depuis ce graphique —
 c'est précisément ce que le bloc E existe pour tester.
 
-**Commits :** `1c64fbb`, `73167f6`, `ca54c3e`, `ef5f4ac`
+**Commits :** `1c64fbb`, `73167f6`, `ca54c3e`, `ef5f4ac`, `d9d2bbb`, `5a92f3c`, `bf69836`, `73dc55f`, `485a657`
