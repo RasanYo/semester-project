@@ -1,0 +1,319 @@
+{
+  "generated_at": "2026-09-14T15:11:48+00:00",
+  "notes": {
+    "window": [
+      "2018-01-01",
+      "2024-12-31"
+    ],
+    "counts": {
+      "events": 20,
+      "by_block": {
+        "A": 8,
+        "B": 4,
+        "E": 4,
+        "C": 3,
+        "D": 1
+      },
+      "entity_rows": 304,
+      "queries": 20
+    },
+    "selection_rule": {
+      "block_A": {
+        "pool_size": 56,
+        "median_polarization": 0.643523,
+        "median_abs_roestigraben": 11.730075,
+        "cell_sizes": {
+          "pol=HIGH/rg=HIGH": 14,
+          "pol=HIGH/rg=LOW": 14,
+          "pol=LOW/rg=HIGH": 14,
+          "pol=LOW/rg=LOW": 14
+        },
+        "within_cell_rule": "highest fog media salience (mediares-tot), ties by anr",
+        "per_cell": 2,
+        "migration_eu_selected": 2,
+        "constraint_repairs": [
+          {
+            "cell": "pol=HIGH/rg=LOW",
+            "promoted": "628",
+            "displaced": "642",
+            "reason": "migration/asylum/EU quota"
+          },
+          {
+            "cell": "pol=LOW/rg=HIGH",
+            "promoted": "631",
+            "displaced": "624",
+            "reason": "migration/asylum/EU quota"
+          }
+        ]
+      },
+      "block_B": {
+        "rule": "every item of type Q1006573 (Swiss Federal Council election) with a day-precision date in the window",
+        "n": 4,
+        "dates": [
+          "2018-12-05",
+          "2019-12-11",
+          "2022-12-07",
+          "2023-12-13"
+        ]
+      },
+      "block_C": {
+        "rule": "Swiss events (P17=Q39), day-precision date in window, sport/entertainment and votes/elections excluded by class hierarchy, events with only foreign participants excluded via P710, top-N by sitelinks",
+        "pool_after_exclusions": 4,
+        "excluded_foreign_actors": [
+          "Q107101128",
+          "Q108666275"
+        ],
+        "chosen": [
+          "Q117220069",
+          "Q55972779",
+          "Q64605546"
+        ],
+        "next_unchosen": [
+          "Q860005"
+        ]
+      },
+      "block_D": {
+        "rule": "minimise polarization, then |Roestigraben|, then anr",
+        "chosen": "651",
+        "polarization": 0.002073,
+        "roestigraben": 2.113529,
+        "runners_up": [
+          {
+            "anr": "618",
+            "polarization": 0.022472
+          },
+          {
+            "anr": "643",
+            "polarization": 0.028249
+          },
+          {
+            "anr": "668",
+            "polarization": 0.357899
+          }
+        ]
+      },
+      "block_E": {
+        "rule": "non-Swiss, non-neighbour events, day-precision date in window, sport/entertainment excluded by class hierarchy, top-N by sitelinks",
+        "pool_after_exclusions": 43,
+        "chosen": [
+          "Q7888194",
+          "Q22923830",
+          "Q101110072",
+          "Q116691303"
+        ],
+        "next_unchosen": [
+          "Q127421251",
+          "Q98073118",
+          "Q62066211"
+        ]
+      }
+    },
+    "cantonal_gap_repairs": {
+      "667": "swissvotes:staatsebenen-de.xlsx",
+      "668": "swissvotes:staatsebenen-de.xlsx",
+      "669": "swissvotes:staatsebenen-de.xlsx",
+      "670": "swissvotes:staatsebenen-de.xlsx",
+      "671": "bfs:ogd-static.voteinfo-app.ch",
+      "672": "bfs:ogd-static.voteinfo-app.ch",
+      "673": "swissvotes:staatsebenen-de.xlsx",
+      "674": "swissvotes:staatsebenen-de.xlsx",
+      "675": "swissvotes:staatsebenen-de.xlsx",
+      "676": "swissvotes:staatsebenen-de.xlsx"
+    },
+    "swissdox_sources": {
+      "used": [
+        "NZZ",
+        "NZZO",
+        "NZZS",
+        "TA",
+        "NNTA",
+        "TAS",
+        "BZ",
+        "NNBE",
+        "BU",
+        "NNBU",
+        "BAZ",
+        "NNBS",
+        "BLI",
+        "BLIO",
+        "SGT",
+        "SGTO",
+        "AZM",
+        "LUZ",
+        "ZWA",
+        "ZWAO",
+        "SRF",
+        "WEW",
+        "WOZ",
+        "TPS",
+        "TPSO",
+        "TDG",
+        "NNTDG",
+        "HEU",
+        "NNHEU",
+        "TLMD",
+        "NNTLM",
+        "RTS",
+        "ZWAS",
+        "ZWSO"
+      ],
+      "unknown": []
+    },
+    "canton_language_mapping": {
+      "fr": [
+        "vd",
+        "ge",
+        "ne",
+        "ju"
+      ],
+      "de": [
+        "zh",
+        "lu",
+        "ur",
+        "sz",
+        "ow",
+        "nw",
+        "gl",
+        "zg",
+        "so",
+        "bs",
+        "bl",
+        "sh",
+        "ar",
+        "ai",
+        "sg",
+        "ag",
+        "tg"
+      ],
+      "excluded": [
+        "be",
+        "fr",
+        "vs",
+        "ti",
+        "gr"
+      ],
+      "why": "bilingual (BE, FR, VS), Italian (TI) and trilingual (GR) cantons are excluded from both sides; assigning them would put our thumb on the axis"
+    }
+  },
+  "sources": [
+    {
+      "name": "swissvotes_dataset",
+      "url": "https://swissvotes.ch/page/dataset/swissvotes_dataset.csv",
+      "local_path": "data/raw/swissvotes/swissvotes_dataset.csv",
+      "fetched_at": "2026-09-14T15:10:45+00:00",
+      "bytes": 2720656,
+      "sha256": "5c32d0d6e61e9ce90e393852248806f2a0769350a7e8c07b8b4d36765164be75",
+      "licence": "CC BY 4.0 -- Swissvotes, Annee Politique Suisse, University of Bern",
+      "role": "block A + block D: federal popular votes"
+    },
+    {
+      "name": "swissvotes_codebook",
+      "url": "https://swissvotes.ch/page/dataset/codebook-de.pdf",
+      "local_path": "data/raw/swissvotes/codebook-de.pdf",
+      "fetched_at": "2026-09-14T15:10:45+00:00",
+      "bytes": 418704,
+      "sha256": "8f2911a0f18e5d4f96ed4a5e1968cfbeab1fb2eb91e31bec2c90b0ceee6c4767",
+      "licence": "CC BY 4.0 -- Swissvotes, Annee Politique Suisse, University of Bern",
+      "role": "code definitions (German only -- the -fr URL serves the same bytes)"
+    },
+    {
+      "name": "staatsebenen_667",
+      "url": "https://swissvotes.ch/vote/667.00/staatsebenen-de.xlsx",
+      "local_path": "data/raw/swissvotes/staatsebenen_667.xlsx",
+      "fetched_at": "2026-09-14T15:10:45+00:00",
+      "bytes": 254118,
+      "sha256": "2519cd32f19e5f56cfa9ab3b6b2dea26c5ca7405ce7f321eddd4f0b4de083d18",
+      "licence": "CC BY 4.0 -- Swissvotes, Annee Politique Suisse, University of Bern",
+      "role": "per-canton results for ballot object 667"
+    },
+    {
+      "name": "staatsebenen_668",
+      "url": "https://swissvotes.ch/vote/668.00/staatsebenen-de.xlsx",
+      "local_path": "data/raw/swissvotes/staatsebenen_668.xlsx",
+      "fetched_at": "2026-09-14T15:10:45+00:00",
+      "bytes": 253952,
+      "sha256": "daead9a71f7663a54525d7f9718e20ae4e5a75abba39ccbbc7884a2ff51f67dc",
+      "licence": "CC BY 4.0 -- Swissvotes, Annee Politique Suisse, University of Bern",
+      "role": "per-canton results for ballot object 668"
+    },
+    {
+      "name": "staatsebenen_669",
+      "url": "https://swissvotes.ch/vote/669.00/staatsebenen-de.xlsx",
+      "local_path": "data/raw/swissvotes/staatsebenen_669.xlsx",
+      "fetched_at": "2026-09-14T15:10:45+00:00",
+      "bytes": 254262,
+      "sha256": "27d4fac5ff9809d25877b25b58b1ebc53921081f9408d5e13048826b18dde5ab",
+      "licence": "CC BY 4.0 -- Swissvotes, Annee Politique Suisse, University of Bern",
+      "role": "per-canton results for ballot object 669"
+    },
+    {
+      "name": "staatsebenen_670",
+      "url": "https://swissvotes.ch/vote/670.00/staatsebenen-de.xlsx",
+      "local_path": "data/raw/swissvotes/staatsebenen_670.xlsx",
+      "fetched_at": "2026-09-14T15:10:45+00:00",
+      "bytes": 255099,
+      "sha256": "00bf1e7b19d0ddcdcd9d42255d9e7a3d1186080b49098d6418b61b26d95d1fa4",
+      "licence": "CC BY 4.0 -- Swissvotes, Annee Politique Suisse, University of Bern",
+      "role": "per-canton results for ballot object 670"
+    },
+    {
+      "name": "bfs_ogd_20240922",
+      "url": "https://ogd-static.voteinfo-app.ch/v1/ogd/sd-t-17-02-20240922-eidgAbstimmung.json",
+      "local_path": "data/raw/bfs/eidgAbstimmung_20240922.json",
+      "fetched_at": "2026-09-14T15:10:46+00:00",
+      "bytes": 1977268,
+      "sha256": "f4e9a5d2b4a4d21372048e5c2a3097825c2af5598ec7a433dda7c98ebfa75669",
+      "licence": "Open Government Data, Federal Statistical Office",
+      "role": "per-canton results for vote day 2024-09-22"
+    },
+    {
+      "name": "staatsebenen_673",
+      "url": "https://swissvotes.ch/vote/673.00/staatsebenen-de.xlsx",
+      "local_path": "data/raw/swissvotes/staatsebenen_673.xlsx",
+      "fetched_at": "2026-09-14T15:10:46+00:00",
+      "bytes": 253629,
+      "sha256": "2f2ee7ada0b1a8e143d63c513350d2dfa22818ebc5250a0abe94c2af41d82c82",
+      "licence": "CC BY 4.0 -- Swissvotes, Annee Politique Suisse, University of Bern",
+      "role": "per-canton results for ballot object 673"
+    },
+    {
+      "name": "staatsebenen_674",
+      "url": "https://swissvotes.ch/vote/674.00/staatsebenen-de.xlsx",
+      "local_path": "data/raw/swissvotes/staatsebenen_674.xlsx",
+      "fetched_at": "2026-09-14T15:10:46+00:00",
+      "bytes": 254227,
+      "sha256": "8672b8ef7e948e1f5ec4d6acc55c9f15e3a5e20d0c7bbd71c88eaf76cf940eae",
+      "licence": "CC BY 4.0 -- Swissvotes, Annee Politique Suisse, University of Bern",
+      "role": "per-canton results for ballot object 674"
+    },
+    {
+      "name": "staatsebenen_675",
+      "url": "https://swissvotes.ch/vote/675.00/staatsebenen-de.xlsx",
+      "local_path": "data/raw/swissvotes/staatsebenen_675.xlsx",
+      "fetched_at": "2026-09-14T15:10:46+00:00",
+      "bytes": 254410,
+      "sha256": "13efe26ce15ebed8c9d7deba188069b5016367c36254bef9f3eed90e3be2c6d7",
+      "licence": "CC BY 4.0 -- Swissvotes, Annee Politique Suisse, University of Bern",
+      "role": "per-canton results for ballot object 675"
+    },
+    {
+      "name": "staatsebenen_676",
+      "url": "https://swissvotes.ch/vote/676.00/staatsebenen-de.xlsx",
+      "local_path": "data/raw/swissvotes/staatsebenen_676.xlsx",
+      "fetched_at": "2026-09-14T15:10:46+00:00",
+      "bytes": 255013,
+      "sha256": "64b50626fd47e9fcc95fee9e5b5076533381d024acb887b0e490e096c861afd5",
+      "licence": "CC BY 4.0 -- Swissvotes, Annee Politique Suisse, University of Bern",
+      "role": "per-canton results for ballot object 676"
+    },
+    {
+      "name": "swissdox_sources",
+      "url": "https://swissdox.linguistik.uzh.ch/manual/auto/swissdox/swissdox_sources.json",
+      "local_path": "data/raw/swissdox/swissdox_sources.json",
+      "fetched_at": "2026-09-14T15:11:48+00:00",
+      "bytes": 37266,
+      "sha256": "50b50fb04bb51766cf6f5d245977b110d3998b32046ab0e24a728cfbaf14216a",
+      "role": "medium codes and coverage periods"
+    }
+  ]
+}

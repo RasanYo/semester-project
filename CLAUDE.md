@@ -40,9 +40,13 @@ Two things decide whether the whole thing works, and both are the contribution:
 
 ## How we work
 
-**Python**, in a local virtualenv. If `.venv/` exists, call `.venv/bin/python` —
-the system `python3` has none of the dependencies. No dependency manifest yet;
-when one lands, it gets a line here.
+**Python 3.12**, in a local virtualenv. Always call `.venv/bin/python` — the
+system `python3` is 3.14 and has none of the dependencies. Dependencies live in
+`pyproject.toml`, pinned in `uv.lock`; both are versioned. `uv sync --extra dev`
+rebuilds the environment from scratch. The code is the `mediapos` package under
+`src/`, installed editable, so scripts import it without path games. Add a
+dependency with `uv add <pkg>` — never `pip install` into `.venv` by hand, it
+desyncs the lock.
 
 **No test suite yet.** That is a fact, not a standard: when code carries a claim
 about the data, write the check that proves it and show the output. Never call
